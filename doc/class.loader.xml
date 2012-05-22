@@ -1,0 +1,2296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="class.loader"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>class ZeLoader</title>
+
+  <section>
+    <title>类摘要</title>
+
+    <para>请求数据提取器。</para>
+
+    <example>
+      <title>ZeLoader</title>
+
+      <classsynopsis language="java">
+        <ooclass>
+          <classname>ZeLoader</classname>
+        </ooclass>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link linkend="loader.isGet">isGet</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link linkend="loader.isPost">isPost</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link linkend="loader.isPut">isPut</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="loader.isDelete">isDelete</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="loader.isTrace">isTrace</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link linkend="loader.getGet">getGet</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$key</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.fromGet">fromGet</link></methodname>
+
+          <methodparam>
+            <type>object | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link
+          linkend="loader.getPost">getPost</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$key</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.fromPost">fromPost</link></methodname>
+
+          <methodparam>
+            <type>object | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link
+          linkend="loader.getCookie">getCookie</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$key</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.fromCookie">fromCookie</link></methodname>
+
+          <methodparam>
+            <type>object | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link
+          linkend="loader.getRequest">getRequest</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$key</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.fromRequest">fromRequest</link></methodname>
+
+          <methodparam>
+            <type>object | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link
+          linkend="loader.getServer">getServer</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$key</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.fromServer">fromServer</link></methodname>
+
+          <methodparam>
+            <type>object | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link
+          linkend="loader.getFile">getFile</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$key</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.fromFile">fromFile</link></methodname>
+
+          <methodparam>
+            <type>object | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link
+          linkend="loader.getSession">getSession</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$key</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.fromSession">fromSession</link></methodname>
+
+          <methodparam>
+            <type>object | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$default</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>string | long</type>
+
+          <methodname><link linkend="loader.getIp">getIp</link></methodname>
+
+          <methodparam>
+            <type>bool</type>
+
+            <parameter>$isFromat</parameter>
+
+            <initializer>FALSE</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link linkend="loader.fromIp">fromIp</link></methodname>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>&amp;$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array</type>
+
+            <parameter>$names</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+
+          <methodparam>
+            <type>bool</type>
+
+            <parameter>$isFromat</parameter>
+
+            <initializer>FALSE</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link
+          linkend="loader.setValues">setValues</link></methodname>
+
+          <methodparam>
+            <type>array</type>
+
+            <parameter>$values</parameter>
+          </methodparam>
+        </methodsynopsis>
+      </classsynopsis>
+    </example>
+
+    <variablelist>
+      <varlistentry>
+        <term><link linkend="loader.isGet">ZeLoader::isGet</link></term>
+
+        <listitem>
+          <para>检查请求方式是否为 GET。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.isPost">ZeLoader::isPost</link></term>
+
+        <listitem>
+          <para>检查请求方式是否为 POST。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.isPut">ZeLoader::isPut</link></term>
+
+        <listitem>
+          <para>检查请求方式是否为 PUT。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.isDelete">ZeLoader::isDelete</link></term>
+
+        <listitem>
+          <para>检查请求方式是否为 DELETE。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.isTrace">ZeLoader::isTrace</link></term>
+
+        <listitem>
+          <para>检查请求方式是否为 TRACE。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.getGet">ZeLoader::getGet</link></term>
+
+        <listitem>
+          <para>获取 GET 方式传递的数据。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.fromGet">ZeLoader::fromGet</link></term>
+
+        <listitem>
+          <para>获取 GET 方式传递的数据，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.getPost">ZeLoader::getPost</link></term>
+
+        <listitem>
+          <para>获取 POST 方式传递的数据。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.fromPost">ZeLoader::fromPost</link></term>
+
+        <listitem>
+          <para>获取 POST 方式传递的数据，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.getCookie">ZeLoader::getCookie</link></term>
+
+        <listitem>
+          <para>获取 COOKIE 方式传递的数据。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.fromCookie">ZeLoader::fromCookie</link></term>
+
+        <listitem>
+          <para>获取 COOKIE 方式传递的数据，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.getRequest">ZeLoader::getRequest</link></term>
+
+        <listitem>
+          <para>获取 GET，POST 和 COOKIE 方式传递的数据。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.fromRequest">ZeLoader::fromRequest</link></term>
+
+        <listitem>
+          <para>获取 GET，POST 和 COOKIE 方式传递的数据，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.getServer">ZeLoader::getServer</link></term>
+
+        <listitem>
+          <para>获取 $_SERVER 的数据。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.fromServer">ZeLoader::fromServer</link></term>
+
+        <listitem>
+          <para>获取 $_SERVER 的数据，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.getFile">ZeLoader::getFile</link></term>
+
+        <listitem>
+          <para>获取 FILE 传递的数据。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.fromFile">ZeLoader::fromFile</link></term>
+
+        <listitem>
+          <para>获取 FILE 传递的数据，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.getSession">ZeLoader::getSession</link></term>
+
+        <listitem>
+          <para>获取 SESSION 方式传递的数据。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.fromSession">ZeLoader::fromSession</link></term>
+
+        <listitem>
+          <para>获取 SESSION 方式传递的数据，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.getIp">ZeLoader::getIp</link></term>
+
+        <listitem>
+          <para>获取客户端IP。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="loader.fromIp">ZeLoader::fromIp</link></term>
+
+        <listitem>
+          <para>获取客户端IP，并填充到指定变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="loader.setValues">ZeLoader::setValues</link></term>
+
+        <listitem>
+          <para>载入预设值。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="loader.isGet">
+    <title>isGet</title>
+
+    <para>检查请求方式是否为 GET。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="loader.isGet">isGet</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取当前页面所使用的请求方法，并判断是否为 GET 方式。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>仅当页面请求方法为 GET 时返回 true，否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>编辑页面载入时，请求现有数据</title>
+
+        <programlisting>
+$loader = new ZeLoader();
+
+if ($loader-&gt;isGet()){
+ /* 从数据库中取回现有数据，并递向view层 */
+}
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.isPost">
+    <title>isPost</title>
+
+    <para>检查请求方式是否为 POST。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="loader.isPost">isPost</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取当前页面所使用的请求方法，并判断是否为 POST 方式。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>仅当页面请求方法为 POST 时返回 true，否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>判断表单是否提交</title>
+
+        <programlisting>
+$loader = new ZeLoader();
+
+if ($loader-&gt;isPost()){
+ /* 这里可以放数据验证，持久化等代码。 */
+}
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.isPut">
+    <title>isPut</title>
+
+    <para>检查请求方式是否为 PUT。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="loader.isPut">isPut</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取当前页面所使用的请求方法，并判断是否为 PUT 方式。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>仅当页面请求方法为 PUT 时返回 true，否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="loader.isPost">isPost范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.isDelete">
+    <title>isDelete</title>
+
+    <para>检查请求方式是否为 DELETE。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link
+        linkend="loader.isDelete">isDelete</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取当前页面所使用的请求方法，并判断是否为 DELETE 方式。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>仅当页面请求方法为 DELETE 时返回 true，否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="loader.isPost">isPost范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.isTrace">
+    <title>isTrace</title>
+
+    <para>检查请求方式是否为 TRACE。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="loader.isTrace">isTrace</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取当前页面所使用的请求方法，并判断是否为 TRACE 方式。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>仅当页面请求方法为 TRACE 时返回 true，否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="loader.isPost">isPost范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getGet">
+    <title>getGet</title>
+
+    <para>获取 GET 方式传递的数据。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link linkend="loader.getGet">getGet</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$key</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取 GET 方式传递的数据，如字段不存在则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>key</term>
+
+          <listitem>
+            <para>字段名。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>请求字符串中存在所需字段则返回相应值，否则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+/* script.php?name=example_get */
+$loader = new ZeLoader();
+
+echo $loader-&gt;getGet('name'); /* example_get */
+echo $loader-&gt;getGet('other','example_default'); /* example_default */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromGet">
+    <title>fromGet</title>
+
+    <para>获取 GET 方式传递的数据，并填充到指定变量</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link linkend="loader.fromGet">fromGet</link></methodname>
+
+        <methodparam>
+          <type>object | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量将指定的字段，填充入数组或对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+/* script.php?name=example_get&amp;age=128_get */
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromGet($values, 'name, age');
+var_export($values); /* array('name' =&gt; 'example_get', 'age' =&gt; '128_get') */
+
+$values = new stdClass();
+$loader-&gt;fromGet($values, 'name, age');
+/**
+  * $values = new stdClass();
+  * $values-&gt;name = 'example_get';
+  * $values-&gt;age = '128_get';
+  */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getPost">
+    <title>getPost</title>
+
+    <para>获取 POST 方式传递的数据。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link linkend="loader.getPost">getPost</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$key</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取 POST 方式传递的数据，如字段不存在则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>key</term>
+
+          <listitem>
+            <para>字段名。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>请求字符串中存在所需字段则返回相应值，否则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+/* script.php?name=example_post */
+$loader = new ZeLoader();
+
+echo $loader-&gt;getPost('name'); /* example_post */
+echo $loader-&gt;getPost('other','example_default'); /* example_default */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromPost">
+    <title>fromPost</title>
+
+    <para>获取 POST 方式传递的数据，并填充到指定变量</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link
+        linkend="loader.fromPost">fromPost</link></methodname>
+
+        <methodparam>
+          <type>object | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量将指定的字段，填充入数组或对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+/* name=example_post&amp;age=128_post */
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromPost($values, 'name, age');
+var_export($values); /* array('name' =&gt; 'example_post', 'age' =&gt; '128_post') */
+
+$values = new stdClass();
+$loader-&gt;fromPost($values, 'name, age');
+/**
+  * $values = new stdClass();
+  * $values-&gt;name = 'example_post';
+  * $values-&gt;age = '128_post';
+  */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getCookie">
+    <title>getCookie</title>
+
+    <para>获取 COOKIE 方式传递的数据。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link
+        linkend="loader.getCookie">getCookie</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$key</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取 COOKIE 方式传递的数据，如字段不存在则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>key</term>
+
+          <listitem>
+            <para>字段名。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>请求字符串中存在所需字段则返回相应值，否则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+/* name=example_cookie */
+$loader = new ZeLoader();
+
+echo $loader-&gt;getCookie('name'); /* example_cookie */
+echo $loader-&gt;getCookie('other','example_default'); /* example_default */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromCookie">
+    <title>fromCookie</title>
+
+    <para>获取 COOKIE 方式传递的数据，并填充到指定变量</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link
+        linkend="loader.fromCookie">fromCookie</link></methodname>
+
+        <methodparam>
+          <type>object | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量将指定的字段，填充入数组或对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+/* name=example_cookie;age=128_cookie */
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromCookie($values, 'name, age');
+var_export($values); /* array('name' =&gt; 'example_cookie', 'age' =&gt; '128_cookie') */
+
+$values = new stdClass();
+$loader-&gt;fromCookie($values, 'name, age');
+/**
+  * $values = new stdClass();
+  * $values-&gt;name = 'example_cookie';
+  * $values-&gt;age = '128_cookie';
+  */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getRequest">
+    <title>getRequest</title>
+
+    <para>获取 GET，POST 方式传递的数据。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link
+        linkend="loader.getRequest">getRequest</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$key</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取 GET，POST 方式传递的数据，如字段不存在则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>key</term>
+
+          <listitem>
+            <para>字段名。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>请求字符串中存在所需字段则返回相应值，否则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+/* name=example_post */
+$loader = new ZeLoader();
+
+echo $loader-&gt;getRequest('name'); /* example_post */
+echo $loader-&gt;getRequest('other','example_default'); /* example_default */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromRequest">
+    <title>fromRequest</title>
+
+    <para>获取 GET，POST 方式传递的数据，并填充到指定变量</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link
+        linkend="loader.fromRequest">fromRequest</link></methodname>
+
+        <methodparam>
+          <type>object | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量将指定的字段，填充入数组或对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+/* name=example_post&amp;age=128_post */
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromRequest($values, 'name, age');
+var_export($values); /* array('name' =&gt; 'example_post', 'age' =&gt; '128_post') */
+
+$values = new stdClass();
+$loader-&gt;fromRequest($values, 'name, age');
+/**
+  * $values = new stdClass();
+  * $values-&gt;name = 'example_post';
+  * $values-&gt;age = '128_post';
+  */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getServer">
+    <title>getServer</title>
+
+    <para>获取 $_SERVER 方式传递的数据。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link
+        linkend="loader.getServer">getServer</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$key</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取 $_SERVER 的数据。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>key</term>
+
+          <listitem>
+            <para>字段名。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>请求字符串中存在所需字段则返回相应值，否则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+$loader = new ZeLoader();
+
+echo $loader-&gt;getServer('SCRIPT_FILENAME'); /* file name */
+echo $loader-&gt;getServer('other','example_default'); /* example_default */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromServer">
+    <title>fromServer</title>
+
+    <para>获取 $_SERVER 的数据，并填充到指定变量。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link
+        linkend="loader.fromServer">fromServer</link></methodname>
+
+        <methodparam>
+          <type>object | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量将指定的字段，填充入数组或对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromServer($values, 'REQUEST_METHOD, SCRIPT_FILENAME');
+var_export($values); /* array('REQUEST_METHOD' =&gt; 'POST', 'SCRIPT_FILENAME' =&gt; __FILE__) */
+
+$values = new stdClass();
+$loader-&gt;fromServer($values, 'REQUEST_METHOD, SCRIPT_FILENAME');
+/**
+  * $values = new stdClass();
+  * $values-&gt;REQUEST_METHOD = 'POST';
+  * $values-&gt;SCRIPT_FILENAME = __FILE__;
+  */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getFile">
+    <title>getFile</title>
+
+    <para>获取 FILE 传递的数据。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link linkend="loader.getFile">getFile</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$key</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取文件表单上传的数据。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>key</term>
+
+          <listitem>
+            <para>字段名。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>请求字符串中存在所需字段则返回相应值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+$loader = new ZeLoader();
+
+var_export($loader-&gt;getFile('file_a'));
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromFile">
+    <title>fromFile</title>
+
+    <para>获取 FILE 的数据，并填充到指定变量。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link
+        linkend="loader.fromFile">fromFile</link></methodname>
+
+        <methodparam>
+          <type>object | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量获取文件表单上传的数据，填充入数组或对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromFile($values, 'file_a, file_b');
+
+$values = new stdClass();
+$loader-&gt;fromFile($values, 'file_a, file_b');
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getSession">
+    <title>getSession</title>
+
+    <para>获取 SESSION 方式传递的数据。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link
+        linkend="loader.getSession">getSession</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$key</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取 SESSION 方式传递的数据，如字段不存在则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>key</term>
+
+          <listitem>
+            <para>字段名。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>请求字符串中存在所需字段则返回相应值，否则返回默认值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+/* script.php?name=example_session */
+$loader = new ZeLoader();
+
+echo $loader-&gt;getSession('name'); /* example_session */
+echo $loader-&gt;getSession('other','example_default'); /* example_default */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromSession">
+    <title>fromSession</title>
+
+    <para>获取 SESSION 方式传递的数据，并填充到指定变量</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link
+        linkend="loader.fromSession">fromSession</link></methodname>
+
+        <methodparam>
+          <type>object | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$default</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量将指定的字段，填充入数组或对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>default</term>
+
+          <listitem>
+            <para>默认值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+/* name=example_session&amp;age=128_session */
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromSession($values, 'name, age');
+var_export($values); /* array('name' =&gt; 'example_session', 'age' =&gt; '128_session') */
+
+$values = new stdClass();
+$loader-&gt;fromSession($values, 'name, age');
+/**
+  * $values = new stdClass();
+  * $values-&gt;name = 'example_session';
+  * $values-&gt;age = '128_session';
+  */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.getIp">
+    <title>getIp</title>
+
+    <para>获取客户端IP。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>string | long</type>
+
+        <methodname><link linkend="loader.getIp">getIp</link></methodname>
+
+        <methodparam>
+          <type>bool</type>
+
+          <parameter>$isFromat</parameter>
+
+          <initializer>FALSE</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取当前请求者IP地址。</para>
+
+      <note>
+        <para>当需要防止 HTTP_X_FORWARDED_FOR 欺诈时，请使用 <link
+        linkend="loader.getServer">getServer('REMOTE_ADDR')</link></para>
+      </note>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>isFromat</term>
+
+          <listitem>
+            <para>true 返回 点分十进制格式, false 返回有符长整型。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>默认返回有符长整型，isFormat 为 true 则返回点分十进制格式。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>字段值和默认值</title>
+
+        <programlisting>
+$loader = new ZeLoader();
+var_export($loader-&gt;getIp());     // 2130706433
+var_export($loader-&gt;getIp(true)); // 127.0.0.1
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.fromIp">
+    <title>fromIp</title>
+
+    <para>获取 FILE 的数据，并填充到指定变量。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link linkend="loader.fromIp">fromIp</link></methodname>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>&amp;$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$names</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+
+        <methodparam>
+          <type>bool</type>
+
+          <parameter>$isFromat</parameter>
+
+          <initializer>FALSE</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>批量获取请求者IP地址，填充入数组或对象。</para>
+
+      <note>
+        <para>当需要方式 HTTP_X_FORWARDED_FOR 欺诈时，请使用 <link
+        linkend="loader.fromServer">fromServer</link> 获取 REMOTE_ADDR。</para>
+      </note>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>字段数组或对象。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>names</term>
+
+          <listitem>
+            <para>字段名，数组或逗号分隔字段名的字符串。</para>
+
+            <note>
+              <para>字段名验证规则为"[a-zA-Z0-9_]+"，除此之外的字符均被认为是间隔符。</para>
+            </note>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值，字段值将直接填充入 fields 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+$values = null;  /* fields 参数为 null 时，结果为数组。*/
+$loader = new ZeLoader();
+$loader-&gt;fromIp($values, 'ip_a, ip_b');
+
+$values = new stdClass();
+$loader-&gt;fromIp($values, 'ip_a, ip_b');
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="loader.setValues">
+    <title>setValues</title>
+
+    <para>载入预设值。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link
+        linkend="loader.setValues">setValues</link></methodname>
+
+        <methodparam>
+          <type>array</type>
+
+          <parameter>$values</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>载入预设值，如ZeRouter的参数结果，使用 GET 或 REQUEST 获取。优先级低于常规GET传参。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>values</term>
+
+          <listitem>
+            <para>预设值。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>无返回值 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>对象或数组填充</title>
+
+        <programlisting>
+/* @var $router Router */
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+$router-&gt;addArray('action', array('add'), '{/}');
+$router-&gt;addArray('action', array('list', 'search'), '/:page')-&gt;append('{/}', '-');
+$router-&gt;addArray('action', array('view', 'edit', 'del'), '/:id');
+$values = $router-&gt;parse(getenv('PATH_INFO'));
+
+/* @var $loader Loader global */
+$loader = new ZeLoader();
+$loader-&gt;setValues($values);
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+</chapter>

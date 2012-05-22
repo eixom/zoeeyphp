@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="class.activestring"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>class ZeActiveString</title>
+
+  <section>
+    <title>类摘要</title>
+
+    <para>以条件激活拼装的字符串。</para>
+
+    <note>
+      <para>注意：字符串拼装顺序以条件“载入顺序”为准。</para>
+    </note>
+
+    <example>
+      <title>ZeActiveString</title>
+
+      <classsynopsis language="java">
+        <ooclass>
+          <classname>ZeActiveString</classname>
+        </ooclass>
+
+        <methodsynopsis>
+          <type>ZeActiveString</type>
+
+          <methodname><link linkend="activestring.put">put</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$condition</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$val</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeActiveString</type>
+
+          <methodname><link
+          linkend="activestring.putAll">putAll</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$map</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeActiveString</type>
+
+          <methodname><link
+          linkend="activestring.active">active</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$condition</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeActiveString</type>
+
+          <methodname><link
+          linkend="activestring.cancel">cancel</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$condition</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeActiveString</type>
+
+          <methodname><link
+          linkend="activestring.update">update</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$oldCondition</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$newCondition</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeActiveString</type>
+
+          <methodname><link
+          linkend="activestring.clear">clear</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeActiveString</type>
+
+          <methodname><link
+          linkend="activestring.toString">toString</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$sep</parameter>
+          </methodparam>
+        </methodsynopsis>
+      </classsynopsis>
+    </example>
+
+    <variablelist>
+      <varlistentry>
+        <term><link
+        linkend="activestring.put">ZeActiveString::put</link></term>
+
+        <listitem>
+          <para>增加条件与结果项。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="activestring.putAll">ZeActiveString::putAll</link></term>
+
+        <listitem>
+          <para>增加多个条件与结果项。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="activestring.active">ZeActiveString::active</link></term>
+
+        <listitem>
+          <para>激活条件。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="activestring.cancel">ZeActiveString::cancel</link></term>
+
+        <listitem>
+          <para>取消条件。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="activestring.update">ZeActiveString::update</link></term>
+
+        <listitem>
+          <para>调换条件。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="activestring.clear">ZeActiveString::clear</link></term>
+
+        <listitem>
+          <para>取消所有激活条件。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="activestring.toString">ZeActiveString::toString</link></term>
+
+        <listitem>
+          <para>将结果拼接为字符串，并使用 $seq 作为间隔。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="activestring.put">
+    <title>put</title>
+
+    <para>增加条件与结果项。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeActiveString</type>
+
+        <methodname><link linkend="activestring.put">put</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$condition</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$val</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>在条件和结果项较为分散，或动态增加单项时使用。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>condition</term>
+
+          <listitem>
+            <para>条件名。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>val</term>
+
+          <listitem>
+            <para>结果。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeActiveString 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>操作一个多重条件的SQL语句</title>
+
+        <programlisting>
+$activeStr = new ZeActiveString();
+$activeStr-&gt;put('select', 'select id,title,content from article 1=1');
+$activeStr-&gt;put('where.id', 'AND id = :id');
+$activeStr-&gt;put('where.category', 'AND category = :category');
+$activeStr-&gt;active('select');
+$activeStr-&gt;active('where.category');
+echo $activeStr-&gt;toString(' ');
+/* select id,title,content from article where 1=1 AND category = :category */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="activestring.putAll">
+    <title>putAll</title>
+
+    <para>增加多个条件与结果项。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeActiveString</type>
+
+        <methodname><link
+        linkend="activestring.putAll">putAll</link></methodname>
+
+        <methodparam>
+          <type>array</type>
+
+          <parameter>$map</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>在条件和结果项集中的情况下使用。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>map</term>
+
+          <listitem>
+            <para>数组键位条件，值为结果项。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeActiveString 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>集中操作一个多重条件的SQL语句</title>
+
+        <programlisting>
+$activeStr = new ZeActiveString();
+$activeStr-&gt;putAll(array(
+      'select' =&gt; 'select id,title,content from 1=1'
+    , 'where.id' =&gt; 'AND id = :id'
+    , 'where.category' =&gt; 'AND category = :category'
+    , 'where.limit' =&gt; 'limit 1'
+));
+$activeStr-&gt;active('select');
+$activeStr-&gt;active('where.id'); /* 根据具体情况进行激活，可换用 category 进行尝试 */
+echo $activeStr-&gt;toString(' ');
+/* select id,title,content from article where 1=1 AND id = :id */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="activestring.active">
+    <title>active</title>
+
+    <para>激活条件。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeActiveString</type>
+
+        <methodname><link
+        linkend="activestring.active">active</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$condition</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>激活条件，取消前激活多次仅生效一次。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>condition</term>
+
+          <listitem>
+            <para>需要激活的条件。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeActiveString 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="activestring.cancel">cancel范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="activestring.cancel">
+    <title>cancel</title>
+
+    <para>取消条件。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeActiveString</type>
+
+        <methodname><link
+        linkend="activestring.cancel">cancel</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$condition</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>取消条件，取消已激活的条件。若取消的条件未激活则不进行任何操作。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>condition</term>
+
+          <listitem>
+            <para>需要取消的条件。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeActiveString 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>在条件激活后取消</title>
+
+        <programlisting>
+$activeStr = new ZeActiveString();
+$activeStr-&gt;putAll(array(
+      'select' =&gt; 'select id,title,content from article where 1=1'
+    , 'where.id' =&gt; 'AND id = :id'
+    , 'where.category' =&gt; 'AND category = :category'
+    , 'where.limit' =&gt; 'limit 1'
+));
+$activeStr-&gt;active('select');
+$activeStr-&gt;active('where.id');
+$activeStr-&gt;cancel('where.id');
+echo $activeStr-&gt;toString(' ');
+/* select id,title,content from article where 1=1   */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="activestring.update">
+    <title>update</title>
+
+    <para>调换条件。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeActiveString</type>
+
+        <methodname><link
+        linkend="activestring.update">update</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$oldCondition</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$newCondition</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>调换条件，若原条件不存在则直接添加激活条件。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>oldCondition</term>
+
+          <listitem>
+            <para>需要取消的条件。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>newCondition</term>
+
+          <listitem>
+            <para>需要激活的条件。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeActiveString 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>更替一个条件</title>
+
+        <programlisting>
+$activeStr = new ZeActiveString();
+$activeStr-&gt;putAll(array(
+      'select' =&gt; 'select id,title,content from article where 1=1'
+    , 'where.id' =&gt; 'AND id = :id'
+    , 'where.category' =&gt; 'AND category = :category'
+    , 'where.limit' =&gt; 'limit 1'
+));
+$activeStr-&gt;active('select');
+$activeStr-&gt;active('where.id');
+$activeStr-&gt;update('where.id', 'where.category');
+echo $activeStr-&gt;toString(' ');
+/* select id,title,content from article where 1=1 AND category = :category */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="activestring.clear">
+    <title>clear</title>
+
+    <para>取消所有激活条件。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeActiveString</type>
+
+        <methodname><link
+        linkend="activestring.clear">clear</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>将已激活条件进行清空。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeActiveString 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>清空所有条件</title>
+
+        <programlisting>
+$activeStr = new ZeActiveString();
+$activeStr-&gt;putAll(array(
+      'select' =&gt; 'select id,title,content from article where 1=1'
+    , 'where.id' =&gt; 'AND id = :id'
+    , 'where.category' =&gt; 'AND category = :category'
+    , 'where.limit' =&gt; 'limit 1'
+));
+$activeStr-&gt;active('select');
+$activeStr-&gt;active('where.id');
+$activeStr-&gt;active('where.category');
+$activeStr-&gt;clear();
+echo $activeStr-&gt;toString(' '); /* 输出长度为0的字符串 */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="activestring.toString">
+    <title>toString</title>
+
+    <para>将结果拼接为字符串，并使用 $seq 作为间隔。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeActiveString</type>
+
+        <methodname><link
+        linkend="activestring.toString">toString</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$sep</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>依照条件填充顺序依次查看条件是否激活，并将以激活的结果值使用 $seq 作为间隔拼接起来。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>sep</term>
+
+          <listitem>
+            <para>间隔符。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeActiveString 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>更替一个条件</title>
+
+        <programlisting>
+$activeStr = new ZeActiveString();
+$activeStr-&gt;putAll(array(
+      'select' =&gt; 'select id,title,content from article where 1=1'
+    , 'where.id' =&gt; 'AND id = :id'
+    , 'where.category' =&gt; 'AND category = :category'
+    , 'where.limit' =&gt; 'limit 1'
+));
+$activeStr-&gt;active('select');
+$activeStr-&gt;active('where.id');
+$activeStr-&gt;active('where.category');
+echo $activeStr-&gt;toString('++');
+/* select id,title,content from article where 1=1++AND category = :category++AND id = :id*/
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+</chapter>

@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="class.router"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>class ZeRouter</title>
+
+  <section>
+    <title>类摘要</title>
+
+    <para>路由参数分析器。</para>
+
+    <example>
+      <title>ZeRouter</title>
+
+      <classsynopsis language="java">
+        <ooclass>
+          <classname>ZeRouter</classname>
+        </ooclass>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link linkend="router.add">add</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$pattern</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link
+          linkend="router.addRegexp">addRegexp</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$varName</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$regexp</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$pattern</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link
+          linkend="router.addArray">addArray</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$varName</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>array</type>
+
+            <parameter>$strs</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$pattern</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link
+          linkend="router.addParamCount">addParamCount</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$count</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$pattern</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link
+          linkend="router.addAllRegexp">addAllRegexp</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$regexp</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>array</type>
+
+            <parameter>$keys</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link linkend="router.append">append</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$pattern</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$sep</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link
+          linkend="router.shiftSep">shiftSep</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$separator</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRouter</type>
+
+          <methodname><link linkend="router.end">end</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>array</type>
+
+          <methodname><link linkend="router.parse">parse</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$query</parameter>
+          </methodparam>
+        </methodsynopsis>
+      </classsynopsis>
+    </example>
+
+    <variablelist>
+      <varlistentry>
+        <term><link linkend="router.add">ZeRouter::add</link></term>
+
+        <listitem>
+          <para>普通规则。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="router.addRegexp">ZeRouter::addRegexp</link></term>
+
+        <listitem>
+          <para>正则匹配已出现的变量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="router.addArray">ZeRouter::addArray</link></term>
+
+        <listitem>
+          <para>已出现变量在某集合内。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="router.addParamCount">ZeRouter::addParamCount</link></term>
+
+        <listitem>
+          <para>参数个数是某值。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="router.addAllRegexp">ZeRouter::addAllRegexp</link></term>
+
+        <listitem>
+          <para>全请求字符串正则匹配。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="router.append">ZeRouter::append</link></term>
+
+        <listitem>
+          <para>追加规则，当满足上一条规则，则追加此规则。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="router.shiftSep">ZeRouter::shiftSep</link></term>
+
+        <listitem>
+          <para>切换分隔符（默认分隔符为 "/"）。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="router.end">ZeRouter::end</link></term>
+
+        <listitem>
+          <para>满足上一条则终止匹配。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="router.parse">ZeRouter::parse</link></term>
+
+        <listitem>
+          <para>分析请求字符串。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>参数规则</title>
+
+    <simplesect>
+      <title>普通规则 “/:title”</title>
+
+      <para>前缀为分隔符（前一规则规定的，默认为”/”），可以省略。</para>
+
+      <para>变量名以冒号”:”起始，名称不包含分隔符即可，但建议仅使用字母和下划线。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>数组 “/:ids[,]“</title>
+
+      <para>与普通规则不同的是，后追加了”[,]“。</para>
+
+      <para>其中逗号”,”为值分隔符，可使用其他字符。</para>
+
+      <para>如值为 /1,2,3,4 结果为 array(1,2,3,4)。</para>
+
+      <para>但当规则为”/:ids[-]” 值便是array(“1,2,3,4″)。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>Map “/:others{/}”</title>
+
+      <para>与普通规则不同的是，后追加了”{/}”。</para>
+
+      <para>其中斜杠”/”为键值分隔符，可使用其他字符。</para>
+
+      <para>如值为 /label/123/title/mytitle 结果为：</para>
+
+      <para>array(‘others’ =&gt; array( ‘label’ =&gt; ’123′, ‘title’ =&gt;
+      ‘mytitle’))</para>
+
+      <para>在实践过程中我们通常不需要变量名，规则为”/{/}”或 “{/}”结果为：</para>
+
+      <para>array(‘label’ =&gt; ’123′, ‘title’ =&gt; ‘mytitle’)</para>
+
+      <example>
+        <title>不定参数示例</title>
+
+        <programlisting>规则 $router-&gt;addArray('action', array('list'), '/:page')-&gt;append('{/}', '-');
+
+链接 /list/1/label/123/title/mytitle
+
+结果 array ( 'action' =&gt; 'list', 'page' =&gt; '1', 'label' =&gt; '123', 'title' =&gt; 'mytitle', )</programlisting>
+      </example>
+
+      <note>
+        <para>在使用Map值时、分隔符应与键值分隔符相区分。</para>
+      </note>
+    </simplesect>
+
+    <simplesect>
+      <title>实践示例</title>
+
+      <example>
+        <title>单页面实现全crud操作所需的Router规则。</title>
+
+        <programlisting>// /ZoeeyCMS/article.php/add/label/123
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+$router-&gt;addArray('action', array('add'), '{/}', '-');
+$router-&gt;addArray('action', array('list', 'search'), '/:page')-&gt;append('{/}', '-');
+$router-&gt;addArray('action', array('view'), '/:id/:title');
+$router-&gt;addArray('action', array('edit'), '/:id');
+$values = $router-&gt;parse($_SERVER['PATH_INFO']);</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.add">
+    <title>add</title>
+
+    <para>普通规则。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link linkend="router.add">add</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$pattern</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>添加一个无条件激活的参数规则。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>pattern</term>
+
+          <listitem>
+            <para>参数规则。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>基本规则</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+
+$router-&gt;parse('/add'); /* araay('action' =&gt; 'add') */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.addRegexp">
+    <title>addRegexp</title>
+
+    <para>正则匹配已出现的变量。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link
+        linkend="router.addRegexp">addRegexp</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$varName</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$regexp</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$pattern</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>当参数匹配指定正则表达式时激活参数规则。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>varName</term>
+
+          <listitem>
+            <para>变量名称。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>regexp</term>
+
+          <listitem>
+            <para>正则表达式。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>pattern</term>
+
+          <listitem>
+            <para>参数规则。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>正则匹配则激活</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+$router-&gt;add('action', '/(list)/i', '/:page/:label');
+$router-&gt;add('action', '/(view|edit)/i', '/:id/:title'); /* 本示例可由更为高效的 addArray 代替，在此仅作实例 */
+
+$router-&gt;parse('/view/123/my-title'); /* array('action' =&gt; 'view','id' =&gt; '123', 'title' =&gt; 'my-title') */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.addArray">
+    <title>addArray</title>
+
+    <para>已出现变量在某集合内。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link
+        linkend="router.addArray">addArray</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$varName</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>array</type>
+
+          <parameter>$strs</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$pattern</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>当参数存在于指定集合时激活参数规则。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>varName</term>
+
+          <listitem>
+            <para>变量名称。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>strs</term>
+
+          <listitem>
+            <para>数据集合。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>pattern</term>
+
+          <listitem>
+            <para>参数规则。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>值存在于集合内则激活</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+$router-&gt;addArray('action', array('view', 'display'), '/:id/:title');
+
+$router-&gt;parse('/view/123/my-title'); /* array('action' =&gt; 'view','id' =&gt; '123', 'title' =&gt; 'my-title') */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.addParamCount">
+    <title>addParamCount</title>
+
+    <para>参数个数是某值。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link
+        linkend="router.addParamCount">addParamCount</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$count</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$pattern</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>当参数个数和指定数量吻合时激活参数规则。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>count</term>
+
+          <listitem>
+            <para>参数数量。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>pattern</term>
+
+          <listitem>
+            <para>参数规则。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>参数数量吻合则激活</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;addParamCount(5, '/:module/:action/:id/:title/:query');
+
+$router-&gt;parse('/article/view/123321/title-of-article/?query');
+/* array('module' =&gt; 'article', 'action' =&gt; 'view', 'id' =&gt; '123321', 'title' =&gt; 'title-of-article', 'query' =&gt; '?query'); */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.addAllRegexp">
+    <title>addAllRegexp</title>
+
+    <para>全请求字符串正则匹配。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link
+        linkend="router.addAllRegexp">addAllRegexp</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$regexp</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>array</type>
+
+          <parameter>$keys</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>当整个请求参数匹配指定正则表达式时激活参数规则。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>regexp</term>
+
+          <listitem>
+            <para>正则表达式。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>keys</term>
+
+          <listitem>
+            <para>参数名称列表。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>整个请求字符串匹配正则表达式</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;addAllRegexp('/([a-z]+)-([a-z]+):([\d]+)\-(.*)/i', array('module', 'action', 'id', 'title'));
+
+$router-&gt;parse('/article-view:123321-title-of-article');
+/* array('module' =&gt; 'article', 'action' =&gt; 'view', 'id' =&gt; '123321', 'title' =&gt; 'title-of-article') */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.append">
+    <title>append</title>
+
+    <para>追加规则。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link linkend="router.append">append</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$pattern</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$sep</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>当满足上一条规则，则追加此规则。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>regexp</term>
+
+          <listitem>
+            <para>正则表达式。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>sep</term>
+
+          <listitem>
+            <para>分隔符。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>识别动态参数</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+$router-&gt;addArray('action', array('list'), '/:page')
+        -&gt;append('{/}', '-');
+$values = $router-&gt;parse('/list/1/label/2/search/mytitle');
+/* array('action' =&gt; 'list', 'page' =&gt; '1', 'label' =&gt; '2', 'search' =&gt; 'mytitle') */
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.shiftSep">
+    <title>shiftSep</title>
+
+    <para>切换分隔符。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link
+        linkend="router.shiftSep">shiftSep</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$separator</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>切换分隔符后，之后解析的参数将以此分隔。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>separator</term>
+
+          <listitem>
+            <para>分隔符（可为字符串）。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>切换分隔符</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;add(':module/:action')-&gt;shiftSep('-');
+$router-&gt;add(':id')-&gt;shiftSep('/');
+$router-&gt;add(':title');
+
+$values = $router-&gt;parse('/article/view/123321-title-of-article');
+/* array('module' =&gt; 'article', 'action' =&gt; 'view', 'id' =&gt; '123321', 'title' =&gt; 'title-of-article') */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.end">
+    <title>end</title>
+
+    <para>终止匹配。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRouter</type>
+
+        <methodname><link
+        linkend="router.shiftSep">shiftSep</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$separator</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>满足上一条则终止匹配。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>separator</term>
+
+          <listitem>
+            <para>分隔符（可为字符串）。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRouter 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>条件性终止</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+$router-&gt;addArray('action', array('view'), '/:id')-&gt;end()
+       -&gt;addRegexp('action', '/^[0-9a-z]+$/i', '/:subaction');
+
+$router-&gt;parse('/view/123/my-title'); /* array('action' =&gt; 'view', 'id' =&gt; '123') */
+$router-&gt;parse('/steup/init_database'); /* array('action' =&gt; 'steup', 'subaction' =&gt; 'init_database') */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="router.parse">
+    <title>parse</title>
+
+    <para>分析请求字符串。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>array</type>
+
+        <methodname><link linkend="router.parse">parse</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$query</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>分。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>query</term>
+
+          <listitem>
+            <para>请求字符串，如：getenv('PATH_INFO')。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>结果数组，若参数规则中的变量没有找到，则值为null。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>分析请求</title>
+
+        <programlisting>
+$router = new ZeRouter();
+$router-&gt;add('/:action');
+$router-&gt;addArray('action', array('view'), '/:id')-&gt;end()
+       -&gt;addRegexp('action', '/^[0-9a-z]+$/i', '/:subaction');
+
+$router-&gt;parse(getenv('PATH_INFO'));
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+</chapter>

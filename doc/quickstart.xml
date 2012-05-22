@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="zoeeyphp.quickstart" xml:lang="zh-CN"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>快速入门</title>
+
+  <para>安装好ZoeeyPHP后便可将示例项目放入http目录内测试。</para>
+
+  <para>第一次浏览示例项目会自动进行数据初始和目录权限检查等。</para>
+
+  <simplesect>
+    <title>示例工程说明</title>
+
+    <task>
+      <title>浏览提示</title>
+
+      <procedure>
+        <step>
+          <para>您需要一个强大的PHP IDE，例如：NetBeans <link
+          xlink:href="http://netbeans.org/">http://netbeans.org/</link>。</para>
+        </step>
+
+        <step>
+          <para>增加源码目录： zoeey/api
+          、当前工程根目录（bootstrap.php中定义的DIR_ROOT目录）。</para>
+
+          <para>示例项目优先考虑了IDE支持，对路径提示和代码提示支持较好。</para>
+
+          <figure>
+            <title>NetBeans 源码目录示意</title>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="images/screen/project-path.png"></imagedata>
+              </imageobject>
+            </mediaobject>
+          </figure>
+        </step>
+      </procedure>
+    </task>
+  </simplesect>
+
+  <simplesect>
+    <title>目录结构</title>
+
+    <example>
+      <title>目录结构</title>
+
+      <programlisting>/zoeeyphp_example
+.
+|-- bootstrap.php           （启动文件，初始基础信息）
+|-- config                  （配置文件目录）
+|   |-- Config.php          （配置文件：数据库链接、模板缓存、调试状态、时区等）
+|   `-- init.php            （初始化基础库、设定时区、SESSION存储方法）
+|-- database
+|   `-- zoeeyphp-example.db （SQLite数据库，安装后自动生成）
+|-- index.php               （新闻模块入口，本程序为多入口。含路由分配、模板分配等）
+|-- install                 （系统安装）
+|   `-- index.php
+|-- lib                     （独立库）
+|   |-- firephp             （FirePHP http://www.firephp.org/）
+|   |-- main                （自属库，与module/common的区别是该目录下的类可移植）
+|   |   |-- Supervisor.php  （全局状态跟踪）
+|   |   `-- funces.php      （基础函数：salted md5，307跳转等。）
+|   `-- smarty
+|-- module
+|   |-- common              （专属库）
+|   |   |-- Conn.php        （数据库连接、缓存服务连接等）
+|   |   |-- Vali.php        （数据验证）
+|   |   |-- PowerCenter.php （权限分配） 
+|   |   |-- Tpl.php         （模板引擎封装）
+|   |   `-- plugin          （通用模板函数）
+|   |       |-- function.buildurl.php      （链接生成，简单示例）
+|   |       |-- function.dateformat.php    （日期时间格式化，支持中文）
+|   |       `-- function.dump.php          （调试工具，打印数据）
+|   `-- news                   （新闻模块示例，数据模型由数组维护）
+|       |-- News.php           （动作分配，业务逻辑）
+|       |-- NewsPower.php      （权限装载）
+|       |-- NewsRecorder.php   （数据持久）
+|       |-- NewsValidator.php  （数据验证）
+|       |-- news_category.php  （示例分类数据）
+|       `-- plugin          （模板函数均在本目录下，可参见common）
+|           |-- function.newsList.php  （新闻列表调用函数，非本模块模板也可调用）
+|           `-- function.newsView.php  （新闻详情调用函数）
+|-- script
+|-- style
+|-- temp         （临时文件目录）
+|   |-- cache    （模板缓存）
+|   |-- compile  （模板编译）
+|   `-- lock     （安装锁，初始自动安装，可多次安装）
+`-- tpl                     （模板目录）
+    |-- common.header.html  （公共header,footer也可建立类似文件）
+    |-- common.noti.html    （状态提示页，error或success级别的错误会跳转到此页）
+    |-- news.edit.html      （新闻新增、编辑表单页）
+    |-- news.list.html      （新闻列表页）
+    `-- news.view.html      （新闻详情查看页，含一列表调用示意）
+
+
+
+</programlisting>
+    </example>
+  </simplesect>
+</chapter>

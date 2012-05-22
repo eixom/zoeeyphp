@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="class.status"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>class ZeStatus</title>
+
+  <section>
+    <title>类摘要</title>
+
+    <para>状态跟踪。</para>
+
+    <example>
+      <title>ZeStatus</title>
+
+      <classsynopsis language="java">
+        <ooclass>
+          <classname>ZeStatus</classname>
+        </ooclass>
+
+        <constructorsynopsis>
+          <methodname><link
+          linkend="status.construct">__construct</link></methodname>
+
+          <methodparam>
+            <type>string | int</type>
+
+            <parameter>$label</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | int</type>
+
+            <parameter>$name</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>string | array | object</type>
+
+            <parameter>$brief</parameter>
+          </methodparam>
+        </constructorsynopsis>
+
+        <methodsynopsis>
+          <type>ZeStatus</type>
+
+          <methodname><link
+          linkend="status.getLabel">getLabel</link></methodname>
+
+          <void/>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeStatus</type>
+
+          <methodname><link
+          linkend="status.getBrief">getBrief</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$lang</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeStatus</type>
+
+          <methodname><link
+          linkend="status.getName">getName</link></methodname>
+
+          <void/>
+        </methodsynopsis>
+      </classsynopsis>
+    </example>
+
+    <variablelist>
+      <varlistentry>
+        <term><link
+        linkend="status.construct">ZeStatus::__construct</link></term>
+
+        <listitem>
+          <para>状态跟踪。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="status.getLabel">ZeStatus::getLabel</link></term>
+
+        <listitem>
+          <para>类别。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="status.getBrief">ZeStatus::getBrief</link></term>
+
+        <listitem>
+          <para>描述。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="status.getName">ZeStatus::getName</link></term>
+
+        <listitem>
+          <para>名称。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="status.construct">
+    <title>__construct</title>
+
+    <para>状态跟踪。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <constructorsynopsis>
+        <methodname><link
+        linkend="status.construct">__construct</link></methodname>
+
+        <methodparam>
+          <type>string | int</type>
+
+          <parameter>$label</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | int</type>
+
+          <parameter>$name</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>string | array</type>
+
+          <parameter>$brief</parameter>
+        </methodparam>
+      </constructorsynopsis>
+
+      <para>为状态跟踪提供分类和描述。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>label</term>
+
+          <listitem>
+            <para>类别。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>name</term>
+
+          <listitem>
+            <para>名称。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>brief</term>
+
+          <listitem>
+            <para>描述。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeStatus 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>全功能示例</title>
+
+        <programlisting>define('ZE_ERROR','error');
+
+$status = new ZeStatus(ZE_ERROR, 'error.title_unvalied'
+                     , array('en-US' =&gt; 'need title for article.'
+                           , 'zh-CN' =&gt; '请认真填写文章标题。'
+                     ));
+
+$status-&gt;getLabel(); /* 'error' */
+$status-&gt;getName();  /* 'error.title_unvalied' */
+$status-&gt;getBrief('en-US');  /* 'need title for article.' */
+$status-&gt;getBrief('zh-CN');  /* '请认真填写文章标题。' */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="status.getLabel">
+    <title>getLabel</title>
+
+    <para>类别。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeStatus</type>
+
+        <methodname><link
+        linkend="status.getLabel">getLabel</link></methodname>
+
+        <void/>
+      </methodsynopsis>
+
+      <para>状态分类主要用于区分处理流程。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>类别信息。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>初始状态示例</title>
+
+        <programlisting>define('ZE_INIT', 'init');
+
+$status = new ZeStatus(ZE_INIT);
+
+$status-&gt;getLabel(); /* 'init' */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="status.getBrief">
+    <title>getBrief</title>
+
+    <para>描述。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeStatus</type>
+
+        <methodname><link
+        linkend="status.getBrief">getBrief</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$lang</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>取得可阅读的状态描述，支持多语言。这种直接将语言文字写入代码的设计是为了方便集中管理。也可以使用 <link
+      linkend="status.getName">getName</link> 将描述信息抽离至其他层面进行重组。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>lang</term>
+
+          <listitem>
+            <para>语言，当描述为数组时，这里填写需要返回的项。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>类别信息。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>状态描述</title>
+
+        <programlisting>define('ZE_ERROR','error');
+
+$status = new ZeStatus(ZE_ERROR, 'error.title_unvalied'
+                     , array('en-US' =&gt; 'need title for article.'
+                           , 'zh-CN' =&gt; '请认真填写文章标题。'
+                     ));
+
+$status-&gt;getBrief('zh-CN');  /* '请认真填写文章标题。' */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="status.getName">
+    <title>getName</title>
+
+    <para>名称。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeStatus</type>
+
+        <methodname><link linkend="status.getName">getName</link></methodname>
+
+        <void/>
+      </methodsynopsis>
+
+      <para>此名称是对状态的详细标注。可用在细节逻辑上的判断，也可以作为稳定的标注信息，传递到界面中供Js使用。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>名称。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>状态名称</title>
+
+        <programlisting>define('ZE_ERROR','error');
+
+$status = new ZeStatus(ZE_ERROR, 'error.title_unvalied');
+
+-- browser --
+
+$status-&gt;getName();  /* 'error.title_unvalied' */
+
+
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+</chapter>

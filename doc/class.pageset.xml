@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="class.pageset"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>class ZePageSet</title>
+
+  <section>
+    <title>类摘要</title>
+
+    <para>获取常用的分页信息。</para>
+
+    <example>
+      <title>ZePageSet</title>
+
+      <classsynopsis language="java">
+        <ooclass>
+          <classname>ZePageSet</classname>
+        </ooclass>
+
+        <constructorsynopsis>
+          <methodname><link
+          linkend="pageset.construct">__construct</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$pageSize</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$page</parameter>
+          </methodparam>
+        </constructorsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.setRecordCount">setRecordCount</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$recordCount</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.getCurrent">getCurrent</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.current">current</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.getPageCount">getPageCount</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.getPageSize">getPageSize</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.getRecordCount">getRecordCount</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.getStartRow">getStartRow</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.getOffset">getOffset</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="pageset.getEndRow">getEndRow</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="pageset.hasPrev">hasPrev</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="pageset.hasNext">hasNext</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="pageset.isLast">isLast</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="pageset.isFirst">isFirst</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="pageset.isList">isList</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link linkend="pageset.first">first</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link linkend="pageset.prev">prev</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link linkend="pageset.next">next</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link linkend="pageset.last">last</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>array</type>
+
+          <methodname><link linkend="pageset.all">all</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>array</type>
+
+          <methodname><link
+          linkend="pageset.siblings">siblings</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$count</parameter>
+
+            <initializer>5</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>mixed</type>
+
+          <methodname><link
+          linkend="pageset.compare">compare</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$page</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$return</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$elseReturn</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="pageset.isCurrent">isCurrent</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$page</parameter>
+          </methodparam>
+        </methodsynopsis>
+      </classsynopsis>
+    </example>
+
+    <variablelist>
+      <varlistentry>
+        <term><link
+        linkend="pageset.construct">ZePageSet::__construct</link></term>
+
+        <listitem>
+          <para>获取分页信息。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.setRecordCount">ZePageSet::setRecordCount</link></term>
+
+        <listitem>
+          <para>设置记录数，分页信息将会重新计算。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.getCurrent">ZePageSet::getCurrent</link></term>
+
+        <listitem>
+          <para>获取当前页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.current">ZePageSet::current</link></term>
+
+        <listitem>
+          <para>获取当前页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.getPageCount">ZePageSet::getPageCount</link></term>
+
+        <listitem>
+          <para>获取页面总数。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.getPageSize">ZePageSet::getPageSize</link></term>
+
+        <listitem>
+          <para>获取单页显示条数。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.getRecordCount">ZePageSet::getRecordCount</link></term>
+
+        <listitem>
+          <para>获取记录总数。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.getStartRow">ZePageSet::getStartRow</link></term>
+
+        <listitem>
+          <para>获取起始行行号。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.getOffset">ZePageSet::getOffset</link></term>
+
+        <listitem>
+          <para>获取起始偏移量。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.getEndRow">ZePageSet::getEndRow</link></term>
+
+        <listitem>
+          <para>获取当前页结束行行数。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.hasPrev">ZePageSet::hasPrev</link></term>
+
+        <listitem>
+          <para>是否有前一页。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.hasNext">ZePageSet::hasNext</link></term>
+
+        <listitem>
+          <para>是否有后一页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.isLast">ZePageSet::isLast</link></term>
+
+        <listitem>
+          <para>是否是最后一页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.isFirst">ZePageSet::isFirst</link></term>
+
+        <listitem>
+          <para>是否是第一页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.isList">ZePageSet::isList</link></term>
+
+        <listitem>
+          <para>是否有列表当记录数为0时则返回false。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.first">ZePageSet::first</link></term>
+
+        <listitem>
+          <para>获取第一页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.prev">ZePageSet::prev</link></term>
+
+        <listitem>
+          <para>获取前一页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.next">ZePageSet::next</link></term>
+
+        <listitem>
+          <para>获取后一页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.last">ZePageSet::last</link></term>
+
+        <listitem>
+          <para>获取最后页页码。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.all">ZePageSet::all</link></term>
+
+        <listitem>
+          <para>获取所有页面列表。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.siblings">ZePageSet::siblings</link></term>
+
+        <listitem>
+          <para>获取临近页面列表。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="pageset.compare">ZePageSet::compare</link></term>
+
+        <listitem>
+          <para>对比页面索引和当前页并显示相应内容。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="pageset.isCurrent">ZePageSet::isCurrent</link></term>
+
+        <listitem>
+          <para>判断是否为当前页。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="pageset.construct">
+    <title>__construct</title>
+
+    <simplesect>
+      <title>描述</title>
+
+      <constructorsynopsis>
+        <methodname><link
+        linkend="pageset.construct">__construct</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$pageSize</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$page</parameter>
+        </methodparam>
+      </constructorsynopsis>
+
+      <para>本类用于获取分页时常需信息。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>pageSize</term>
+
+          <listitem>
+            <para>单页信息数。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>page</term>
+
+          <listitem>
+            <para>当前页。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example xml:id="pageset.example">
+        <title>ZePageSet完整范例</title>
+
+        <programlisting>
+/* 每页3条，共有30条信息， 当前为第5页 */
+$pageSet = new ZePageSet(3, 5);
+$pageSet-&gt;setRecordCount(30);
+
+$pageSet-&gt;isFirst(); /* false */
+$pageSet-&gt;isLast(); /* false */
+$pageSet-&gt;hasList(); /* true */
+$pageSet-&gt;hasNext(); /* true */
+$pageSet-&gt;hasPrev(); /* true */
+$pageSet-&gt;current(); /* 5 */
+$pageSet-&gt;first(); /* 1 */
+$pageSet-&gt;getOffset(); /* 12 */
+$pageSet-&gt;getStartRow(); /* 13 */
+$pageSet-&gt;getEndRow(); /* 15 */
+$pageSet-&gt;getRecordCount(); /* 30 */
+$pageSet-&gt;siblings(1); /* array(5) */
+$pageSet-&gt;siblings(5); /* array(3, 4, 5, 6, 7) */
+$pageSet-&gt;siblings(6); /* array(3, 4, 5, 6, 7, 8) */
+$pageSet-&gt;all(); /* array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) */
+
+</programlisting>
+      </example>
+
+      <example xml:id="pageset.database_example">
+        <title>ZePageSet数据库操作范例</title>
+
+        <programlisting>
+MySQL 中的使用
+[LIMIT {[offset,] row_count | row_count OFFSET offset}]
+
+sql = "LIMIT :offset,:pageSize "
+offset = $pageset-&gt;getOffset();
+pageSize = $pageset-&gt;getPageSize();
+
+sql = "BETWEEN :startRow and :endRow "
+startRow = $pageset-&gt;getStartRow();
+endRow = $pageset-&gt;getEndRow();
+
+
+H2database中的使用
+sql = "LIMIT :limit OFFSET :offset"
+limit = $pageset-&gt;getPageSize();
+offset = $pageset-&gt;getOffset();
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.setRecordCount">
+    <title>setRecordCount</title>
+
+    <para>设置记录数，分页信息将会重新计算。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.setRecordCount">setRecordCount</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$recordCount</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>每次设置记录总数后，分页信息将会被重新计算。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>recordCount</term>
+
+          <listitem>
+            <para>记录总数。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.getCurrent">
+    <title>getCurrent</title>
+
+    <para>获取当前页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.getCurrent">getCurrent</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取当前页码，这是经过计算后的当前页码，并非在构造函数中递入的页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>经过计算后的当前页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.current">
+    <title>current</title>
+
+    <para>获取当前页页码，本函数与 <link linkend="pageset.getCurrent">getCurrent</link>
+    相同。</para>
+  </section>
+
+  <section xml:id="pageset.getPageCount">
+    <title>getPageCount</title>
+
+    <para>获取页面总数</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.getPageCount">getPageCount</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取页面总数。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>返回页面总数。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.getPageSize">
+    <title>getPageSize</title>
+
+    <para>获取单页面信息项数量</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.getPageSize">getPageSize</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取单页面信息项数量。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>单页面信息项数量。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link
+      linkend="pageset.database_example">ZePageSet数据库操作范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.getRecordCount">
+    <title>getRecordCount</title>
+
+    <para>获取记录总数。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.getRecordCount">getRecordCount</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取记录总数，与 <link
+      linkend="pageset.setRecordCount">setRecordCount</link> 设置相同。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>记录总数。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.getStartRow">
+    <title>getStartRow</title>
+
+    <para>获取起始行行号。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.getStartRow">getStartRow</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取起始行行号。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>起始行号。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link
+      linkend="pageset.database_example">ZePageSet数据库操作范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.getOffset">
+    <title>getOffset</title>
+
+    <para>获取起始偏移量。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.getOffset">getOffset</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取起始偏移量。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>起始偏移量。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link
+      linkend="pageset.database_example">ZePageSet数据库操作范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.getEndRow">
+    <title>getEndRow</title>
+
+    <para>获取当前页结束行行号。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="pageset.getEndRow">getEndRow</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取当前页结束行行号。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>结束行行好。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link
+      linkend="pageset.database_example">ZePageSet数据库操作范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.hasPrev">
+    <title>hasPrev</title>
+
+    <para>是否有前一页。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link
+        linkend="pageset.hasPrev">hasPrev</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>是否有前一页。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前页非第一页则返回 true 否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.hasNext">
+    <title>hasNext</title>
+
+    <para>是否有后一页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link
+        linkend="pageset.hasNext">hasNext</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>是否有后一页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前页非最后一页则返回 true 否则为 false</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.isLast">
+    <title>isLast</title>
+
+    <para>是否是最后一页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="pageset.isLast">isLast</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>判断当前页是否为最后一页。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前页为最后一页时返回 true 否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.isFirst">
+    <title>isFirst</title>
+
+    <para>是否是第一页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link
+        linkend="pageset.isFirst">isFirst</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>是否是第一页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前页为第一页则返回 true 否则为 false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.isList">
+    <title>isList</title>
+
+    <para>检查分页列表是否为空。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="pageset.isList">isList</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>检查分页列表是否为空。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>仅当记录数为0时则返回false。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.first">
+    <title>first</title>
+
+    <para>获取第一页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link linkend="pageset.first">first</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取第一页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>始终返回 1，仅为统一格式提供。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.prev">
+    <title>prev</title>
+
+    <para>获取前一页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link linkend="pageset.prev">prev</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取前一页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>前一页/上一页 页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.next">
+    <title>next</title>
+
+    <para>获取后一页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link linkend="pageset.next">next</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取后一页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>后一页/下一页 页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.last">
+    <title>last</title>
+
+    <para>获取最后页页码。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link linkend="pageset.last">last</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取最后页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>获取最后页页码。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.all">
+    <title>all</title>
+
+    <para>获取所有页码列表。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>array</type>
+
+        <methodname><link linkend="pageset.all">all</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取所有页码列表。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>所有页码组成的数组。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.siblings">
+    <title>siblings</title>
+
+    <para>获取临近页面列表。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>array</type>
+
+        <methodname><link
+        linkend="pageset.siblings">siblings</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$count</parameter>
+
+          <initializer>5</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取临近页面列表。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>临近$count页的页码列表，$count为页面数最大值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.compare">
+    <title>compare</title>
+
+    <para>对比页面索引和当前页并显示相应内容。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>mixed</type>
+
+        <methodname><link
+        linkend="pageset.compare">compare</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$page</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$return</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$elseReturn</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>对比页面索引和当前页并显示相应内容。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>页码与当前页“相同”返回 $return 的值，不同则返回 $elseReturn 的值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="pageset.isCurrent">
+    <title>isCurrent</title>
+
+    <para>判断是否为当前页。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link
+        linkend="pageset.isCurrent">isCurrent</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$page</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>判断是否为当前页。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>$page 与当前页码相同时返回 true。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>参见<link linkend="pageset.example">ZePageSet完整范例</link>。</para>
+    </simplesect>
+  </section>
+</chapter>

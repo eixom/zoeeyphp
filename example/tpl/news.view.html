@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>ZoeeyPHP_Example</title>
+        <!--{include file='common.header.html'}-->
+    </head>
+    <body>
+        <h1>
+
+        </h1>
+        <div class="container_16">
+            <h2>
+
+            </h2>
+
+            <div class="grid_16">
+                <p>新闻详情（<a href="/index.php">返回列表</a>）</p>
+                <ol>
+                    <li>标题：<!--{$info.title}--></li>
+                    <li>内容：<!--{$info.detail}--></li>
+                    <li>修改时间：<!--{dateformat time=$info.edit_time}--></li>
+                    <li>dump：<!--{dump info=$info}--></li>
+                </ol>
+                <p>下一条</p>
+                <!--{newsView next=$info.id}-->
+                <ol>
+                    <li>标题：<a href="/index.php/view/<!--{$news.id}-->/<!--{$news.title}-->"><!--{$news.title}--></a></li>
+                    <li>dump：<!--{dump info=$news}--></li>
+                </ol>
+                <p>列表调用</p>
+                <!--{newsList as='news_list' pageSize=5 search='title_2'}-->
+                <ol>
+                    <!--{foreach key=i item=item from=$news_list }-->
+                    <li><a href="/index.php/view/<!--{$item.id}-->"><!--{$item.title}--></a></li>
+                    <!--{/foreach}-->
+                </ol>
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>ZoeeyPHP_Example</title>
+        <!--{include file='common.header.html'}-->
+    </head>
+    <body>
+        <h1>
+
+        </h1>
+        <div class="container_16">
+            <h2>
+
+            </h2>
+
+            <div class="grid_16">
+                <p>新闻列表（<a href="/index.php/add">新增</a>）（<a href="/install/index.php" onclick="javascript:return confirm('\u786e\u8ba4\uff1f')">初始化数据</a>）</p>
+                <ol>
+                    <li><a href="/index.php/list/1/search/title_2">search "title_2"</a></li>
+                </ol>
+                <!--{newsList as='news_list' pageAs='pageSet' pageSize=5
+                              page=$info.page search=$info.search order=$info.order}-->
+                <ol>
+                    <!--{foreach key=i item=item from=$news_list }-->
+                    <li>
+                        [<a href="/index.php/edit/<!--{$item.id}-->">编辑</a>]
+                        [<a href="/index.php/del/<!--{$item.id}-->">删除</a>]
+                        <a href="/index.php/view/<!--{$item.id}-->/<!--{$item.title}-->"><!--{$item.title}--></a>
+                    </li>
+                    <!--{/foreach}-->
+                </ol>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="grid_16">
+                <p>共 <!--{$pageSet->getRecordCount()}--> 项，当前为 <!--{$pageSet->getstartRow()}--> 至 <!--{$pageSet->getendRow()}--> 项</p>
+            </div>
+
+            <div class="grid_16 page_list">
+                <!--{buildurl search=$info.search }-->
+
+                <ul>
+
+                    <!--{if ($pageSet->isCurrent(1))}-->
+                        <li><a  title="首页" class="disabled">|&lt;&lt;</a></li>
+                    <!--{else}-->
+                        <li><a href="/index.php/list/1<!--{$query}-->" title="首页">|&lt;&lt;</a></li>
+                    <!--{/if}-->
+
+                    <!--{foreach item=page from=$pageSet->siblings(5)}-->
+                    <!--{if $pageSet->isCurrent($page)}-->
+                        <li class="current"><!--{$page}--></li>
+                    <!--{else}-->
+                        <li><a href="/index.php/list/<!--{$page}--><!--{$query}-->"><!--{$page}--></a></li>
+                    <!--{/if}-->
+                    <!--{/foreach}-->
+
+
+                    <!--{if ($pageSet->getcurrent() == $pageSet->getpageCount())}-->
+                        <li><a  title="尾页">&gt;&gt;|</a></li>
+                    <!--{else}-->
+                        <li><a href="/index.php/list/<!--{$pageSet->getPageCount()}--><!--{$query}-->" title="尾页">&gt;&gt;|</a></li>
+                    <!--{/if}-->
+                </ul>
+            </div>
+
+        </div>
+    </body>
+</html>

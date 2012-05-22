@@ -1,0 +1,1131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="class.recorder"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>class ZeRecorder</title>
+
+  <section>
+    <title>类摘要</title>
+
+    <para>PDO辅助类。</para>
+
+    <note>
+      <para>与PDO参数绑定有所不同的是，同一名称可出现多次。</para>
+    </note>
+
+    <example>
+      <title>ZeRecorder</title>
+
+      <classsynopsis language="java">
+        <ooclass>
+          <classname>ZeRecorder</classname>
+        </ooclass>
+
+        <constructorsynopsis>
+          <methodname><link
+          linkend="recorder.construct">__construct</link></methodname>
+
+          <methodparam>
+            <type>PDO</type>
+
+            <parameter>$conn</parameter>
+          </methodparam>
+        </constructorsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRecorder</type>
+
+          <methodname><link linkend="recorder.query">query</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$query</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRecorder</type>
+
+          <methodname><link
+          linkend="recorder.getStmt">getStmt</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRecorder</type>
+
+          <methodname><link linkend="recorder.bind">bind</link></methodname>
+
+          <methodparam>
+            <type>array | object</type>
+
+            <parameter>$fields</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>array | object</type>
+
+            <parameter>$types</parameter>
+
+            <initializer>array()</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRecorder</type>
+
+          <methodname><link linkend="recorder.fetch">fetch</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$style</parameter>
+
+            <initializer>PDO::FETCH_ASSOC</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRecorder</type>
+
+          <methodname><link
+          linkend="recorder.getInt">getInt</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>ZeRecorder</type>
+
+          <methodname><link
+          linkend="recorder.fetchAll">fetchAll</link></methodname>
+
+          <methodparam>
+            <type>int</type>
+
+            <parameter>$style</parameter>
+
+            <initializer>PDO::FETCH_ASSOC</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="recorder.execute">execute</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link linkend="recorder.exec">exec</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="recorder.lastId">lastId</link></methodname>
+
+          <methodparam>
+            <type>string</type>
+
+            <parameter>$name</parameter>
+
+            <initializer>NULL</initializer>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>int</type>
+
+          <methodname><link
+          linkend="recorder.affected">affected</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link linkend="recorder.begin">begin</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="recorder.rollback">rollback</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>bool</type>
+
+          <methodname><link
+          linkend="recorder.commit">commit</link></methodname>
+
+          <void />
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void />
+
+          <methodname><link linkend="recorder.close">close</link></methodname>
+
+          <void />
+        </methodsynopsis>
+      </classsynopsis>
+    </example>
+
+    <variablelist>
+      <varlistentry>
+        <term><link
+        linkend="recorder.construct">ZeRecorder::__construct</link></term>
+
+        <listitem>
+          <para>PDO辅助类。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.query">ZeRecorder::query</link></term>
+
+        <listitem>
+          <para>预处理语句。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="recorder.getStmt">ZeRecorder::getStmt</link></term>
+
+        <listitem>
+          <para>获取 PDOStatement 对象。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.bind">ZeRecorder::bind</link></term>
+
+        <listitem>
+          <para>绑定参数。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.fetch">ZeRecorder::fetch</link></term>
+
+        <listitem>
+          <para>获取单行记录。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.getInt">ZeRecorder::getInt</link></term>
+
+        <listitem>
+          <para>获取数量（获取第一列的值，并转换为int）。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="recorder.fetchAll">ZeRecorder::fetchAll</link></term>
+
+        <listitem>
+          <para>获取多行记录。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="recorder.execute">ZeRecorder::execute</link></term>
+
+        <listitem>
+          <para>执行请求。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.exec">ZeRecorder::exec</link></term>
+
+        <listitem>
+          <para>执行请求，并返回受影响的列数。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.lastId">ZeRecorder::lastId</link></term>
+
+        <listitem>
+          <para>最后插入数据的ID。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="recorder.affected">ZeRecorder::affected</link></term>
+
+        <listitem>
+          <para>受影响的列数。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.begin">ZeRecorder::begin</link></term>
+
+        <listitem>
+          <para>初始化事务。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="recorder.rollback">ZeRecorder::rollback</link></term>
+
+        <listitem>
+          <para>回滚事务。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.commit">ZeRecorder::commit</link></term>
+
+        <listitem>
+          <para>提交事务。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link linkend="recorder.close">ZeRecorder::close</link></term>
+
+        <listitem>
+          <para>关闭连接（默认会自动关闭）。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="recorder.construct">
+    <title>__construct</title>
+
+    <para>PDO 辅助类。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <constructorsynopsis>
+        <methodname><link
+        linkend="recorder.construct">__construct</link></methodname>
+
+        <methodparam>
+          <type>PDO</type>
+
+          <parameter>$conn</parameter>
+        </methodparam>
+      </constructorsynopsis>
+
+      <para>载入PDO实例，初始化PDO辅助对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>conn</term>
+
+          <listitem>
+            <para>PDO连接实例。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select :first `first`,:second `second` ')
+        -&gt;bind(array(
+                     'first' =&gt; 11
+                   , 'second' =&gt; 12
+              ));
+        -&gt;fetch();
+
+var_export($value); /* array('first' =&gt; 11, 'second' =&gt; 12) */
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.query">
+    <title>query</title>
+
+    <para>预处理语句。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRecorder</type>
+
+        <methodname><link linkend="recorder.query">query</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$query</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>预处理SQL语句，参数以冒号":"开头可包含 "a-zA-Z0-9_"，同一参数可出现在多个位置。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>query</term>
+
+          <listitem>
+            <para>SQL语句。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRecorder 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select :first `first`,:second `second` ')
+        -&gt;bind(array(
+                     'first' =&gt; 11
+                   , 'second' =&gt; 12
+              ));
+        -&gt;fetch();
+
+var_export($value); /* array('first' =&gt; 11, 'second' =&gt; 12) */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.getStmt">
+    <title>getStmt</title>
+
+    <para>获取 PDOStatement 对象。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRecorder</type>
+
+        <methodname><link
+        linkend="recorder.getStmt">getStmt</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>得到 PDO::prepare 的返回值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>PDOStatement 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$recorder-&gt;query('select :first `first`,:second `second` ');
+
+$stmt = $recorder-&gt;getStmt();
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.bind">
+    <title>bind</title>
+
+    <para>绑定参数。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRecorder</type>
+
+        <methodname><link linkend="recorder.bind">bind</link></methodname>
+
+        <methodparam>
+          <type>array | object</type>
+
+          <parameter>$fields</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>array | object</type>
+
+          <parameter>$types</parameter>
+
+          <initializer>array()</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>参数名不需要冒号前缀，可包含"a-zA-Z0-9_"。同一参数在SQL中出现多次，不需要重复绑定。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>fields</term>
+
+          <listitem>
+            <para>参数值。参数名与值的键值对。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>types</term>
+
+          <listitem>
+            <para>参数类型。参数名与类型的键值对。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当前 ZeRecorder 对象。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select :first `first`,:second `second` ')
+                  -&gt;bind(array(
+                                'first' =&gt; 11
+                              , 'second' =&gt; 12
+                        )
+                        , array(
+                                'first' =&gt; PDO::PARAM_INT
+                              , 'second' =&gt; PDO::PARAM_STR
+                        )
+                    )
+                  -&gt;fetch();
+
+var_export($value); /* array('first' =&gt; 11, 'second' =&gt; 12) */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.fetch">
+    <title>fetch</title>
+
+    <para>获取单行记录。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRecorder</type>
+
+        <methodname><link linkend="recorder.fetch">fetch</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$style</parameter>
+
+          <initializer>PDO::FETCH_ASSOC</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取单条记录。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>style</term>
+
+          <listitem>
+            <para>返回列形式。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>各列的值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select :first `first`,:second `second` ')
+                  -&gt;bind(array(
+                                'first' =&gt; 11
+                              , 'second' =&gt; 12
+                        )
+                        , array(
+                                'first' =&gt; PDO::PARAM_INT
+                              , 'second' =&gt; PDO::PARAM_STR
+                        )
+                     )
+                  -&gt;fetch();
+
+var_export($value); /* array('first' =&gt; 11, 'second' =&gt; 12) */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.getInt">
+    <title>getInt</title>
+
+    <para>获取数量。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRecorder</type>
+
+        <methodname><link linkend="recorder.fetch">fetch</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$style</parameter>
+
+          <initializer>PDO::FETCH_ASSOC</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取第一列的值，并转换为int，本方法常用于获取信息数量。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>第一列转换为整数的值。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select 321 `key` ')
+                  -&gt;getInt();
+
+var_export($value); /* 321 */
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.fetchAll">
+    <title>fetchAll</title>
+
+    <para>获取多行记录。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>ZeRecorder</type>
+
+        <methodname><link
+        linkend="recorder.fetchAll">fetchAll</link></methodname>
+
+        <methodparam>
+          <type>int</type>
+
+          <parameter>$style</parameter>
+
+          <initializer>PDO::FETCH_ASSOC</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取结果集。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>style</term>
+
+          <listitem>
+            <para>返回列形式。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>包含多行值的数组。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select :first `first`,:second `second` ')
+                  -&gt;bind(array(
+                                'first' =&gt; 11
+                              , 'second' =&gt; 12
+                        )
+                        , array(
+                                'first' =&gt; PDO::PARAM_INT
+                              , 'second' =&gt; PDO::PARAM_STR
+                        )
+                     )
+                  -&gt;fetchAll();
+
+var_export($value); /* array(array('first' =&gt; 11, 'second' =&gt; 12)) */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.execute">
+    <title>execute</title>
+
+    <para>执行请求。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link
+        linkend="recorder.execute">execute</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>执行请求。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>执行成功与否。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select false ')
+                  -&gt;execute();
+
+var_dump($value); /* true */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.exec">
+    <title>exec</title>
+
+    <para>执行请求，并返回受影响的列数。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link linkend="recorder.exec">exec</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>执行语句成功后，获取受影响的列数。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>受影响列数，语句执行失败则返回 0 。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$value = $recorder-&gt;query('select 123 ')
+                  -&gt;exec();
+
+var_dump($value); /* 1 */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.lastId">
+    <title>lastId</title>
+
+    <para>最后插入数据的ID。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link linkend="recorder.lastId">lastId</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$name</parameter>
+
+          <initializer>NULL</initializer>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>获取最后新增数据的编号或续列等。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>name</term>
+
+          <listitem>
+            <para>序列名。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>ID</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$recorder-&gt;query('INSERT INTO `article` (`id`,`title`,`content`) VALUES (null, :title, :content)')
+         -&gt;bind(array(
+                    'title' =&gt; 'blah~blah~blah~'
+                  , 'content' =&gt; 12
+            )
+         )
+         -&gt;execute();
+$value = $recorder-&gt;lastId();
+var_dump($value); /* 1 */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.affected">
+    <title>affected</title>
+
+    <para>受影响的列数。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>int</type>
+
+        <methodname><link
+        linkend="recorder.affected">affected</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>获取受上一操作影响的列数。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>受影响列数</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$recorder-&gt;query('INSERT INTO `article` (`id`,`title`,`content`) VALUES (null, :title, :content)')
+         -&gt;bind(array(
+                    'title' =&gt; 'blah~blah~blah~'
+                  , 'content' =&gt; 12
+            )
+         )
+         -&gt;execute();
+$value = $recorder-&gt;affected();
+var_dump($value); /* 1 */
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.begin">
+    <title>begin</title>
+
+    <para>初始化事务。</para>
+
+    <note>
+      <para>使用前请确认已将 autocommit 关闭。</para>
+    </note>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="recorder.begin">begin</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>初始化事务。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>执行是否成功。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example xml:id="recorder.begin_example">
+        <title>简单示例</title>
+
+        <programlisting>
+$conn = new PDO('mysql:host=127.0.0.1;port=3308;dbname=test', 'test', 'testtest');
+$recorder = new ZeRecorder($conn);
+$recorder-&gt;begin();
+$recorder-&gt;query('INSERT INTO `article` (`id`,`title`,`content`) VALUES (null, :title, :content)')
+         -&gt;bind(array(
+                    'title' =&gt; 'blah~blah~blah~'
+                  , 'content' =&gt; 12
+            )
+         )
+         -&gt;execute();
+$value = $recorder-&gt;lastId();
+
+var_dump($value); /* 1 */
+if (!$value){
+    $recorder-&gt;rollback();
+}
+/* todo other thing */
+$recorder-&gt;commit();
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.rollback">
+    <title>rollback</title>
+
+    <para>回滚事务。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link
+        linkend="recorder.rollback">rollback</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>回滚事务。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>执行是否成功。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>查看 <link linkend="recorder.begin_example">ZeRecorder::begin</link>
+      范例</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.commit">
+    <title>commit</title>
+
+    <para>提交事务。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>bool</type>
+
+        <methodname><link linkend="recorder.commit">commit</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>提交事务。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>执行是否成功。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <para>查看 <link linkend="recorder.begin_example">ZeRecorder::begin</link>
+      范例</para>
+    </simplesect>
+  </section>
+
+  <section xml:id="recorder.close">
+    <title>close</title>
+
+    <para>关闭连接（默认会自动关闭）。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void />
+
+        <methodname><link linkend="recorder.close">close</link></methodname>
+
+        <void />
+      </methodsynopsis>
+
+      <para>该方法会在构析函数中自动执行。</para>
+    </simplesect>
+  </section>
+</chapter>

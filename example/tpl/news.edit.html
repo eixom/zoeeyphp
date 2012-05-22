@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>ZoeeyPHP_Example</title>
+        <!--{include file='common.header.html'}-->
+    </head>
+    <body>
+        <h1>
+
+        </h1>
+        <div class="container_16">
+            <h2>
+
+            </h2>
+
+            <div class="grid_16">
+                <p>新闻详情（<a href="/index.php">返回列表</a>）</p>
+                <form action="" method="POST">
+                    <input type="hidden" name="id" value="<!--{$info.id}-->"/>
+                    <ol>
+                        <li>标题：<input type="text" name="title" value="<!--{$info.title}-->"/></li>
+                        <li>
+                            分类：
+                            <select name="category">
+                                <!--{foreach key=i item=item from=$categories }-->
+                                <option value="<!--{$item.id}-->"><!--{$item.name}--></option>
+                                <!--{/foreach}-->
+                            </select>
+                        </li>
+                        <li>内容：<input type="text" name="detail" value="<!--{$info.detail}-->"/> </li>
+                        <li>
+                            <input type="submit" value="提交"/>
+                        </li>
+                    </ol>
+                </form>
+            </div>
+            <div class="grid_16">
+                <p>状态提示（<a href="/index.php">返回新闻列表</a>）</p>
+                <ol>
+                    <li>类别：<!--{$status.label}--></li>
+                    <li>名称：<!--{$status.name}--></li>
+                    <li>描述：<!--{$status.brief}--></li>
+                    <li>dump：<!--{dump status=$status}--></li>
+                </ol>
+            </div>
+
+        </div>
+    </body>
+</html>

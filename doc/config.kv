@@ -1,0 +1,110 @@
+
+# single html
+
+single.in = "docs/books/zoeeyphp/userguide.xml"
+single.xsl = "docs/books/zoeeyphp/xsl/single/htmlsingle.xsl"
+single.file = "docs/target/zoeeyphp/single/userguide.html"
+single.outdir = "docs/target/zoeeyphp/single/"
+single.zip = "docs/target/zoeeyphp/single/zoeeyphp.zip"
+single.header = "docs/books/zoeeyphp/xsl/single/header.html"
+# 文件拷贝
+single.copy[image] = "docs/books/zoeeyphp/images"
+single.target[image] = "docs/target/zoeeyphp/single/images"
+single.copy[css] = "docs/books/zoeeyphp/css/single"
+single.target[css] = "docs/target/zoeeyphp/single/css"
+
+
+# pdf
+
+pdf.outdir = "docs/target/zoeeyphp/pdf/"
+pdf.fop = "docs/books/zoeeyphp/xsl/pdf/fop.xml"
+pdf.in = "docs/books/zoeeyphp/userguide.xml"
+pdf.xsl = "docs/books/zoeeyphp/xsl/pdf/pdf.xsl"
+pdf.pdf = "docs/target/zoeeyphp/pdf/zoeeyphp.pdf"
+
+pdf.copy[fonts.georgia] = "%SystemRoot%/Fonts/georgia.ttf"
+pdf.target[fonts.georgia] = "docs/zips/cache/fonts/georgia.ttf"
+
+pdf.copy[fonts.georgiab] = "%SystemRoot%/Fonts/georgiab.ttf"
+pdf.target[fonts.georgiab] = "docs/zips/cache/fonts/georgiab.ttf"
+
+pdf.copy[fonts.georgiai] = "%SystemRoot%/Fonts/georgiai.ttf"
+pdf.target[fonts.georgiai] = "docs/zips/cache/fonts/georgiai.ttf"
+
+pdf.copy[fonts.georgiaz] = "%SystemRoot%/Fonts/georgiaz.ttf"
+pdf.target[fonts.georgiaz] = "docs/zips/cache/fonts/georgiaz.ttf"
+
+pdf.copy[fonts.simsun] = "%SystemRoot%/fonts/simsun.ttc"
+pdf.target[fonts.simsun] = "docs/zips/cache/fonts/SimSun.ttc"
+
+pdf.copy[fonts.simhei] = "%SystemRoot%/fonts/simhei.ttf"
+pdf.target[fonts.simhei] = "docs/zips/cache/fonts/SimHei.ttf"
+
+pdf.copy[fonts.arial] = "%SystemRoot%/fonts/arial.ttf"
+pdf.target[fonts.arial] = "docs/zips/cache/fonts/Arial.ttf"
+
+pdf.copy[fonts.arialbd] = "%SystemRoot%/fonts/arialbd.ttf"
+pdf.target[fonts.arialbd] = "docs/zips/cache/fonts/Arialbd.ttf"
+
+pdf.copy[fonts.simfang] = "%SystemRoot%/fonts/simfang.ttf"
+pdf.target[fonts.simfang] = "docs/zips/cache/fonts/SimFang.ttf"
+
+pdf.copy[fonts.simkai] = "%SystemRoot%/fonts/simkai.ttf"
+pdf.target[fonts.simkai] = "docs/zips/cache/fonts/SimKai.ttf"
+
+
+# html
+
+html.in = "docs/books/zoeeyphp/userguide.xml"
+html.xsl = "docs/books/zoeeyphp/xsl/html/html.xsl"
+html.outdir = "docs/target/zoeeyphp/html"
+html.zip = "docs/target/zoeeyphp/html/zoeeyphp.zip"
+html.header = "docs/books/zoeeyphp/xsl/html/header.html"
+# 文件拷贝
+html.copy[image] = "docs/books/zoeeyphp/images"
+html.target[image] = "docs/target/zoeeyphp/html/images"
+html.copy[css] = "docs/books/zoeeyphp/css/html"
+html.target[css] = "docs/target/zoeeyphp/html/css"
+
+
+# chm
+
+chm.in = "docs/books/zoeeyphp/userguide.xml"
+chm.xsl = "docs/books/zoeeyphp/xsl/chm/chm.xsl"
+chm.outdir = "docs/target/zoeeyphp/chm"
+# 在 meta generator 后生成其他内容 如 script 此处填写文件名
+chm.header = "docs/books/zoeeyphp/xsl/chm/header.html"
+# hhc.exe 的路径
+chm.hhc =  "C:/Program Files (x86)/HTML Help Workshop/hhc.exe"
+# 文件拷贝
+chm.copy[image] = "docs/books/zoeeyphp/images"
+chm.target[image] = "docs/target/zoeeyphp/chm/images"
+chm.copy[css] = "docs/books/zoeeyphp/css/html"
+chm.target[css] = "docs/target/zoeeyphp/chm/css"
+
+
+# site
+
+site.in = "docs/books/zoeeyphp/userguide.xml"
+site.xsl = "docs/books/zoeeyphp/xsl/site/site.xsl"
+site.outdir = "docs/target/zoeeyphp/site"
+site.zip = "docs/target/zoeeyphp/site/userguide.zip"
+site.header = "docs/books/zoeeyphp/xsl/site/header.html"
+# 文件拷贝
+site.copy[image] = "docs/books/zoeeyphp/images"
+site.target[image] = "docs/target/zoeeyphp/site/images"
+site.copy[css] = "docs/books/zoeeyphp/css/html"
+site.target[css] = "docs/target/zoeeyphp/site/css"
+
+
+# wiki
+
+wiki.in = "docs/books/zoeeyphp/userguide.xml"
+wiki.xsl = "docs/books/zoeeyphp/xsl/wiki/wiki.xsl"
+wiki.file = "docs/target/zoeeyphp/wiki/userguide.wiki"
+wiki.outdir = "docs/target/zoeeyphp/wiki"
+wiki.zip = "docs/target/zoeeyphp/wiki/zoeeyphp.zip"
+wiki.header = "docs/books/zoeeyphp/xsl/wiki/header.wiki"
+# 文件拷贝
+wiki.copy[image] = "docs/books/zoeeyphp/images"
+wiki.target[image] = "docs/target/zoeeyphp/wiki/images"
