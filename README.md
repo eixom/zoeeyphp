@@ -26,10 +26,10 @@ ZoeeyPHP ÊÇPHPÀ©Õ¹ÊµÏÖµÄWeb¿ª·¢¿ò¼Üµ×²ã£¬ÌØµãÊÇ½Ï´óÏŞ¶ÈµÄ½«¿ØÖÆÈ¨ÊÍ·Å¸øÁË³ÌĞòÔ±¡
 
     
 Ñ¹Ëõ°ü£º
-[zoeeyphp_latest.zip] (http://zoeeyphp.googlecode.com/files/zoeeyphp_latest.zip)
+[zoeeyphp_latest.zip] (https://github.com/downloads/zoeey/zoeeyphp/zoeeyphp_latest.zip)
 
 ÀúÊ·°æ±¾£º
-[zoeeyphp_1.1.zip] (http://zoeeyphp.googlecode.com/files/zoeeyphp_1.1.zip)
+[zoeeyphp_1.1.zip] (https://github.com/downloads/zoeey/zoeeyphp/zoeeyphp_1.1.zip)
 
 °æ±¾¿â£º
 
@@ -37,7 +37,7 @@ ZoeeyPHP ÊÇPHPÀ©Õ¹ÊµÏÖµÄWeb¿ª·¢¿ò¼Üµ×²ã£¬ÌØµãÊÇ½Ï´óÏŞ¶ÈµÄ½«¿ØÖÆÈ¨ÊÍ·Å¸øÁË³ÌĞòÔ±¡
 git://github.com/zoeey/zoeeyphp.git
 ```
 
-DLL£º
+dll£º
 
 * [zoeey-1.1-x86-5.2-zts.dll] (https://github.com/zoeey/zoeeyphp/raw/master/dll/zoeey-1.1-x86-5.2-zts.dll)
 * [zoeey-1.1-x86-5.2-nts.dll] (https://github.com/zoeey/zoeeyphp/raw/master/dll/zoeey-1.1-x86-5.2-nts.dll)
@@ -45,9 +45,6 @@ DLL£º
 * [zoeey-1.1-x86-5.3-nts.dll] (https://github.com/zoeey/zoeeyphp/raw/master/dll/zoeey-1.1-x86-5.3-nts.dll)
 
 ## ÊÖ²áÏÂÔØ 
-
--- ÔÚÏß²é¿´ http://zoeey.org/zoeeyphp/ --
-
 
 <table>
     <tr>
