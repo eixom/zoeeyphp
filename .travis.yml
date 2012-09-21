@@ -10,6 +10,9 @@ notifications:
     email:
         - system128@gmail.com
 
+env:
+    - REPORT_EXIT_STATUS=1 NO_INTERACTION=1
+
 # compile
 before_script:
     - cd src
@@ -19,5 +22,5 @@ before_script:
 
 # test
 script:
-    - pear run-tests --cgi=php-cgi tests/*.phpt
+    - make test
 
