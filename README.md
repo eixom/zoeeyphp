@@ -1,5 +1,7 @@
 PHP扩展实现的Web开发框架底层，特点是较大限度的将控制权释放给了程序员。
 
+[![Build Status](https://secure.travis-ci.org/zoeey/zoeeyphp.png)](http://travis-ci.org/zoeey/zoeeyphp)
+
 ## 介绍
 
 ZoeeyPHP 是PHP扩展实现的Web开发框架底层，特点是较大限度的将控制权释放给了程序员。
@@ -44,7 +46,7 @@ dll：
 * [zoeey-1.1-x86-5.3-zts.dll] (https://github.com/zoeey/zoeeyphp/raw/master/dll/zoeey-1.1-x86-5.3-zts.dll)
 * [zoeey-1.1-x86-5.3-nts.dll] (https://github.com/zoeey/zoeeyphp/raw/master/dll/zoeey-1.1-x86-5.3-nts.dll)
 
-## 手册下载 
+## 手册下载
 
 <table>
     <tr>
