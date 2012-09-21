@@ -19,13 +19,16 @@
 
 #define ZE_TRACK_VARS_SESSION 10000
 
+extern zend_class_entry * ze_loader_ce;
+
+zval * ze_loader_instance(TSRMLS_D);
+
 PHP_ZOEEY_API zval ** get_global_by_name(zval * values, char * name, int name_len, char * key, int key_len, zval * def TSRMLS_DC);
 PHP_ZOEEY_API zval ** get_track(zval * values, char * key, int key_len, zval * def, int track TSRMLS_DC);
 PHP_ZOEEY_API zval  * get_ip(zend_bool is_format TSRMLS_DC);
 PHP_ZOEEY_API void    from_ip(zval * fields, zval * names, zend_bool is_format TSRMLS_DC);
 PHP_ZOEEY_API void    from_track_var(zval * values,zval * fields, zval * names, zval * def, int track TSRMLS_DC);
 
-extern zend_class_entry * ze_loader_ce;
 
 PHP_MINIT_FUNCTION(ze_loader);
 

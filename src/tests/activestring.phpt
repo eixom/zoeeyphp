@@ -15,14 +15,20 @@ echo 'putAll,active:';
 $select = 'SELECT `id` ';
 $count = 'SELECT count(`id`) ';
 $where = 'WHERE 1=1 ';
+$where_in = 'AND `id` IN (%s) OR `id` = %d ';
 $activeString = new ZeActiveString();
-$activeString->putAll(array('select' => $select, 'count' => $count));
+$activeString->putAll(array('select' => $select
+                          , 'count' => $count
+                          , 'where_in' => $where_in));
 $activeString->active('select');
 echo assert($activeString->toString() == $select);
 
 $activeString->active('count');
 echo ',', assert($activeString->toString() == $select . $count);
-echo ',', assert($activeString->toString('|') == $select . '|' . $count), EOL;
+echo ',', assert($activeString->toString('|') == $select . '|' . $count);
+
+$activeString->active('where_in', '1,2,3', 5);
+echo ',', assert($activeString->toString('|') == $select . '|' . $count . '|' . sprintf($where_in, '1,2,3', 5)), EOL;
 
 /* put */
 echo 'put:';
@@ -104,7 +110,7 @@ $activeString->clear();
 echo ',', assert($activeString->toString() == '');
 ?>
 --EXPECT--
-putAll,active:1,1,1
+putAll,active:1,1,1,1
 put:1,1
 cancel:1,1,1,1,1
 update:1,1

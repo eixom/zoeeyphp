@@ -32,17 +32,20 @@
 #include "pageset.h"
 #include "recorder.h"
 #include "status.h"
+#include "functions.h"
 
 static const zend_module_dep php_zoeey_deps[] = {
-    ZEND_MOD_REQUIRED("PDO")
-    {NULL,NULL,NULL}
+	ZEND_MOD_REQUIRED("PDO")
+	{NULL,NULL,NULL}
 };
 
 
 /* {{{ zoeey_functions[]
  */
-const zend_function_entry zoeey_functions[] = {
-    {NULL, NULL, NULL}
+zend_function_entry zoeey_functions[] = {
+	PHP_FE(ze_loader, ze_loader_args)
+	PHP_FE(ze_router, ze_router_args)
+	{NULL, NULL, NULL}
 };
 /* }}} */
 
@@ -59,14 +62,14 @@ ZEND_GET_MODULE(zoeey)
  */
 PHP_MINIT_FUNCTION(zoeey)
 {
-    PHP_MINIT(ze_router)(INIT_FUNC_ARGS_PASSTHRU);
-    PHP_MINIT(ze_loader)(INIT_FUNC_ARGS_PASSTHRU);
-    PHP_MINIT(ze_activestring)(INIT_FUNC_ARGS_PASSTHRU);
-    PHP_MINIT(ze_pageset)(INIT_FUNC_ARGS_PASSTHRU);
-    PHP_MINIT(ze_recorder)(INIT_FUNC_ARGS_PASSTHRU);
-    PHP_MINIT(ze_status)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(ze_router)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(ze_loader)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(ze_activestring)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(ze_pageset)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(ze_recorder)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(ze_status)(INIT_FUNC_ARGS_PASSTHRU);
 
-    return SUCCESS;
+	return SUCCESS;
 }
 /* }}} */
 
@@ -74,7 +77,7 @@ PHP_MINIT_FUNCTION(zoeey)
  */
 PHP_MSHUTDOWN_FUNCTION(zoeey)
 {
-    return SUCCESS;
+	return SUCCESS;
 }
 /* }}} */
 
@@ -82,7 +85,7 @@ PHP_MSHUTDOWN_FUNCTION(zoeey)
  */
 PHP_RINIT_FUNCTION(zoeey)
 {
-    return SUCCESS;
+	return SUCCESS;
 }
 /* }}} */
 
@@ -90,7 +93,7 @@ PHP_RINIT_FUNCTION(zoeey)
  */
 PHP_RSHUTDOWN_FUNCTION(zoeey)
 {
-    return SUCCESS;
+	return SUCCESS;
 }
 /* }}} */
 
@@ -98,9 +101,9 @@ PHP_RSHUTDOWN_FUNCTION(zoeey)
  */
 PHP_MINFO_FUNCTION(zoeey)
 {
-    php_info_print_table_start();
-    php_info_print_table_header(2, "zoeey support", "enabled");
-    php_info_print_table_end();
+	php_info_print_table_start();
+	php_info_print_table_header(2, "zoeey support", "enabled");
+	php_info_print_table_end();
  
 }
 /* }}} */
@@ -111,22 +114,22 @@ PHP_MINFO_FUNCTION(zoeey)
  */
 zend_module_entry zoeey_module_entry = {
 #if ZEND_MODULE_API_NO >= 220050617
-    STANDARD_MODULE_HEADER_EX, NULL,
-    php_zoeey_deps,
+	STANDARD_MODULE_HEADER_EX, NULL,
+	php_zoeey_deps,
 #elif ZEND_MODULE_API_NO >= 20010901
-    STANDARD_MODULE_HEADER,
+	STANDARD_MODULE_HEADER,
 #endif
-    "zoeey",
-    zoeey_functions,
-    PHP_MINIT(zoeey),
-    PHP_MSHUTDOWN(zoeey),
-    PHP_RINIT(zoeey),
-    PHP_RSHUTDOWN(zoeey),
-    PHP_MINFO(zoeey),
+	"zoeey",
+	zoeey_functions,
+	PHP_MINIT(zoeey),
+	PHP_MSHUTDOWN(zoeey),
+	PHP_RINIT(zoeey),
+	PHP_RSHUTDOWN(zoeey),
+	PHP_MINFO(zoeey),
 #if ZEND_MODULE_API_NO >= 20010901
-    ZE_VERSION, /* zoeey version */
+	ZE_VERSION, /* zoeey version */
 #endif
-    STANDARD_MODULE_PROPERTIES
+	STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
 

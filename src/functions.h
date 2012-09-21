@@ -16,18 +16,26 @@
 
 /* $Id: spl_sxe.h 293036 2010-01-03 09:23:27Z sebastian $ */
 
-#ifndef ZE_STATUS_H
-#define ZE_STATUS_H
+#ifndef ZE_FUNCTIONS_H
+#define ZE_FUNCTIONS_H
 
 #include "php.h"
 
-extern zend_class_entry * ze_router_ce;
+PHP_FUNCTION(ze_loader);
 
-zval * ze_router_instance(TSRMLS_D);
+/* {{{ ze_loader_args */
+ZEND_BEGIN_ARG_INFO(ze_loader_args, 0)
+	ZEND_ARG_OBJ_INFO(1, loader, ZeLoader, 0)
+ZEND_END_ARG_INFO()
+/* }}} */
 
-PHP_MINIT_FUNCTION(ze_router);
-
-#endif /* ZE_STATUS_H */
+PHP_FUNCTION(ze_router);
+/* {{{ ze_router_args */
+ZEND_BEGIN_ARG_INFO(ze_router_args, 0)
+	ZEND_ARG_OBJ_INFO(1, router, ZeRouter, 0)
+ZEND_END_ARG_INFO()
+/* }}} */
+#endif /* ZE_FUNCTIONS_H */
 
 /*
  * Local Variables:
@@ -37,4 +45,3 @@ PHP_MINIT_FUNCTION(ze_router);
  * vim600: fdm=marker
  * vim: noet sw=4 ts=4
  */
-

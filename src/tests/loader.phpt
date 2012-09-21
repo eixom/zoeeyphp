@@ -73,14 +73,14 @@ if (php_sapi_name() == 'apache2handler') {
 
 /* getIp,fromIp */
 
-echo 'getIp,fromIp';
+echo 'getIp,fromIp:';
 $_SERVER['HTTP_CLIENT_IP'] = null;
 $_SERVER['HTTP_X_FORWARDED_FOR'] = '127.0.0.2,127.0.0.3';
 
 echo assert('127.0.0.2' == $loader->getIp(true));
 echo ',', assert(2130706434 == $loader->getIp());
 
-$names = 'ip1,ip2';
+$names = 'ip1 ,ip2';
 $values = null;
 $loader->fromIp($values, $names);
 echo ',', assert(array('ip1' => 2130706434, 'ip2' => 2130706434) == $values);
@@ -262,7 +262,7 @@ echo ',', assert($values['age'] == '128_cookie');
 echo ',', assert($values['search'] == 'test_search');
 ?>
 --EXPECT--
-getIp,fromIp1,1,1,1,1,1,1,1,1,1
+getIp,fromIp:1,1,1,1,1,1,1,1,1,1
 isGet,isPost:1,1,1,1,1
 getGet,fromGet:1,1,1,1,1
 getPost,fromPost:1,1

@@ -23,7 +23,6 @@ exit(__FILE__ . ':not for inclusion!');
  * 以条件激活拼装的字符串。
  * 注意：字符串拼装顺序以条件<b>载入顺序</b>为准。
  *
- * @author MoXie
  */
 class ZeActiveString {
 
@@ -53,7 +52,7 @@ class ZeActiveString {
      * @param string $condition  需要激活的条件
      * @return ZeActiveString
      */
-    public function active($condition);
+    public function active($condition, $args, $__, $_);
 
     /**
      *

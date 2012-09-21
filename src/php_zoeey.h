@@ -46,65 +46,41 @@ PHP_RINIT_FUNCTION(zoeey);
 PHP_RSHUTDOWN_FUNCTION(zoeey);
 PHP_MINFO_FUNCTION(zoeey);
 
-
 #ifdef ZTS
 #define ZOEEY_G(v) TSRMG(zoeey_globals_id, zend_zoeey_globals *, v)
 #else
 #define ZOEEY_G(v) (zoeey_globals.v)
 #endif
 
+		
+
+
+
 
 /** {{{ new array
  */
 #define ZE_NEW_ARRAY(arr_name)                                                 \
-        ALLOC_INIT_ZVAL(arr_name);                                             \
-        array_init(arr_name);
+		ALLOC_INIT_ZVAL(arr_name);                                             \
+		array_init(arr_name);
 /* }}} */
 
 
-
-/** {{{ ptr dtor
- */
-#define ZE_PTR_DTOR(zp)                                                        \
-        if (zp) {                                                              \
-            zval_ptr_dtor(&zp);                                                \
-        }
-/* }}} */
-
-/** {{{ dtor
- */
-#define ZE_DTOR(z)                                                             \
-        if (&z) {                                                              \
-            zval_dtor(&z);                                                     \
-        }
-/* }}} */
-
-/** {{{ redefine
- */
-#define ZE_RE_DEFINE(zp)                                                       \
-          ZE_PTR_DTOR(zp)                                                      \
-          MAKE_STD_ZVAL(zp)
-/* }}} */
-
-
-/** {{{ efree
- */
-#define ZE_FREE(v)                                                             \
-        if (v) {                                                               \
-            efree(v);                                                          \
-        }
-/* }}} */
-
-
+/*{{{ ref count*/
 #ifndef Z_ADDREF_P
 #define Z_ADDREF_P 	 ZVAL_ADDREF
 #define Z_REFCOUNT_P ZVAL_REFCOUNT
 #define Z_DELREF_P 	 ZVAL_DELREF
 #endif
-
+/*}}}*/
 #endif    /* PHP_ZOEEY_H */
-
-
+/*{{{*/
+#ifndef MAKE_COPY_ZVAL
+#define MAKE_COPY_ZVAL(ppzv, pzv) \
+	*(pzv) = **(ppzv);            \
+	zval_copy_ctor((pzv));        \
+	INIT_PZVAL((pzv));
+#endif
+/*}}}*/
 /*
  * Local variables:
  * tab-width: 4

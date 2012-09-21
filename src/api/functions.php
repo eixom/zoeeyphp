@@ -20,50 +20,12 @@ exit(__FILE__ . ':not for inclusion!');
 
 /**
  *
- * 状态
- *
+ * @param ZeLoader $loader
  */
-class ZeStatus {
-
-    /**
-     *
-     * @param string | int   $label 类别
-     * @param string | int   $name  名称
-     * @param string | array | object $brief 描述
-     */
-    public function __construct($label, $name = NULL, $brief = NULL);
-
-    /**
-     *
-     * 类别
-     *
-     * @return string | int
-     */
-    public function getLabel();
-
-    /**
-     *
-     * 描述
-     *
-     * @param string | int  $lang 语言，当描述为数组时，这里填写需要返回的项。
-     * @return string
-     */
-    public function getBrief($lang = NULL);
-
-    /**
-     *
-     * 名称
-     *
-     * @return  string 名称
-     */
-    public function getName();
-
-    /**
-     *
-     * 转换为数组
-     *
-     */
-    public function toArray();
-}
-
+function ze_loader(ZeLoader $loader = NULL);
+/**
+ *
+ * @param ZeRouter $router
+ */
+function ze_router(ZeRouter $router = NULL);
 ?>
