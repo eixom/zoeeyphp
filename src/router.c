@@ -68,7 +68,8 @@ static void parse_pattern(zval * values, char * pattern, int len, char * value T
 			sep = estrndup(pattern + len - 2, 1);
 			offset = NULL;
 			pattern_sub = estrndup(pattern, len - 3);
-			ZE_NEW_ARRAY(vals);
+			MAKE_STD_ZVAL(vals);
+			array_init(vals);
 			val = php_strtok_r(value, sep, &offset);
 			while (val != NULL) {
 				add_next_index_string(vals, val, 1);
@@ -83,7 +84,8 @@ static void parse_pattern(zval * values, char * pattern, int len, char * value T
 			 pattern_sub = estrndup(pattern, len - 3);
 			/* name{-} */
 			if (len > 3) {
-				ZE_NEW_ARRAY(params);
+				MAKE_STD_ZVAL(params);
+				array_init(params);
 				offset = NULL;
 				name = php_strtok_r(value, sep, &offset);
 				val  = php_strtok_r(0, sep, &offset);
@@ -134,7 +136,8 @@ PHP_METHOD(ze_router, __construct) {
 
 	self = getThis();
 
-	ZE_NEW_ARRAY(rules);
+	MAKE_STD_ZVAL(rules);
+	array_init(rules);
 	zend_update_property(ze_router_ce, self, ZEND_STRL(ZE_RULES), rules TSRMLS_CC);
 	zval_ptr_dtor(&rules);
 
@@ -167,7 +170,8 @@ PHP_METHOD(ze_router, add) {
 	sep   = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_SEP)  , 0 TSRMLS_CC);
 	{
 		/* new rule */
-		ZE_NEW_ARRAY(rule);
+		MAKE_STD_ZVAL(rule);
+		array_init(rule);
 		add_assoc_long(rule, "type", ZE_TYPE_NORMAL);
 		add_assoc_stringl(rule, "sep", Z_STRVAL_P(sep), Z_STRLEN_P(sep), 1);
 		add_assoc_stringl(rule, "pattern", pattern, pattern_len, 1);
@@ -211,7 +215,8 @@ PHP_METHOD(ze_router, addRegexp) {
 	rules = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_RULES), 0 TSRMLS_CC);
 	sep  = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_SEP)   , 0 TSRMLS_CC);
 	{
-		ZE_NEW_ARRAY(rule);
+		MAKE_STD_ZVAL(rule);
+		array_init(rule);
 		add_assoc_long(rule, "type", ZE_TYPE_REGEXP);
 		add_assoc_stringl(rule, "sep", Z_STRVAL_P(sep), Z_STRLEN_P(sep), 1);
 		add_assoc_stringl(rule, "var_name", var_name, var_name_len, 1);
@@ -259,7 +264,8 @@ PHP_METHOD(ze_router, addArray) {
 	rules = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_RULES), 0 TSRMLS_CC);
 	sep   = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_SEP)  , 0 TSRMLS_CC);
 	{
-		ZE_NEW_ARRAY(rule);
+		MAKE_STD_ZVAL(rule);
+		array_init(rule);
 		add_assoc_long(rule, "type", ZE_TYPE_INSET);
 		add_assoc_stringl(rule, "sep", Z_STRVAL_P(sep), Z_STRLEN_P(sep), 1);
 		add_assoc_stringl(rule, "pattern", pattern, pattern_len, 1);
@@ -300,7 +306,8 @@ PHP_METHOD(ze_router, addParamCount) {
 	rules = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_RULES), 0 TSRMLS_CC);
 	sep   = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_SEP)  , 0 TSRMLS_CC);
 	{
-		ZE_NEW_ARRAY(rule);
+		MAKE_STD_ZVAL(rule);
+		array_init(rule);
 		add_assoc_long(rule, "type", ZE_TYPE_COUNT);
 		add_assoc_stringl(rule, "sep", Z_STRVAL_P(sep), Z_STRLEN_P(sep), 1);
 		add_assoc_stringl(rule, "pattern", pattern, pattern_len, 1);
@@ -344,7 +351,8 @@ PHP_METHOD(ze_router, addAllRegexp) {
 
 	rules = zend_read_property(ze_router_ce, self, ZEND_STRL(ZE_RULES), 0 TSRMLS_CC);
 	{
-		ZE_NEW_ARRAY(rule);
+		MAKE_STD_ZVAL(rule);
+		array_init(rule);
 		add_assoc_long(rule, "type", ZE_TYPE_ALLREGEXP);
 		add_assoc_stringl(rule, "regexp", regexp, regexp_len, 1);
 		Z_ADDREF_P(keys);
@@ -403,7 +411,8 @@ PHP_METHOD(ze_router, append) {
 	}
 
 	/* copy the last element */
-	ZE_NEW_ARRAY(rule);
+	MAKE_STD_ZVAL(rule);
+	array_init(rule);
 	zend_hash_copy(Z_ARRVAL_P(rule), Z_ARRVAL_PP(last_rule), (copy_ctor_func_t) zval_add_ref, NULL, sizeof(zval *));
 
 	if (rule != NULL) {
@@ -558,7 +567,8 @@ PHP_METHOD(ze_router, parse) {
 		WRONG_PARAM_COUNT;
 	}
 
-	ZE_NEW_ARRAY(values);
+	MAKE_STD_ZVAL(values);
+	array_init(values);
 
 	do{
 		if (query_len == 0) {

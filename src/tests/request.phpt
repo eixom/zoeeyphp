@@ -1,5 +1,5 @@
 --TEST--
-Check for ZeLoader
+Check for ZeRequest
 --SKIPIF--
 <?php
 if (!extension_loaded("zoeey")) {
@@ -53,7 +53,7 @@ $_COOKIE['age'] = '128_cookie';
 setcookie('name', $_COOKIE['name'], time() + 3600);
 setcookie('age', $_COOKIE['age'], time() + 3600);
 
-$loader = new ZeLoader();
+$request = new ZeRequest();
 if (php_sapi_name() == 'apache2handler') {
     echo '
 <p>post twice<p>
@@ -77,16 +77,16 @@ echo 'getIp,fromIp:';
 $_SERVER['HTTP_CLIENT_IP'] = null;
 $_SERVER['HTTP_X_FORWARDED_FOR'] = '127.0.0.2,127.0.0.3';
 
-echo assert('127.0.0.2' == $loader->getIp(true));
-echo ',', assert(2130706434 == $loader->getIp());
+echo assert('127.0.0.2' == $request->getIp(true));
+echo ',', assert(2130706434 == $request->getIp());
 
 $names = 'ip1 ,ip2';
 $values = null;
-$loader->fromIp($values, $names);
+$request->fromIp($values, $names);
 echo ',', assert(array('ip1' => 2130706434, 'ip2' => 2130706434) == $values);
 
 $values = new stdClass();
-echo ',', $loader->fromIp($values, $names);
+$request->fromIp($values, $names);
 
 $expect = new stdClass();
 $expect->ip1 = '2130706434';
@@ -96,11 +96,11 @@ echo ',', assert($values == $expect);
 $names = array('ip5', 'ip6');
 $values = null;
 $_SERVER['HTTP_CLIENT_IP'] = '127.0.0.1';
-$loader->fromIp($values, $names);
+$request->fromIp($values, $names);
 echo ',', assert(array('ip5' => 2130706433, 'ip6' => 2130706433) == $values);
 
 $values = new stdClass();
-echo ',', $loader->fromIp($values, $names);
+$request->fromIp($values, $names);
 $expect = new stdClass();
 $expect->ip5 = '2130706433';
 $expect->ip6 = '2130706433';
@@ -108,96 +108,95 @@ echo ',', assert($values == $expect);
 
 
 $_SERVER['HTTP_CLIENT_IP'] = '127.0.0.1';
-echo ',', assert('127.0.0.1' == $loader->getIp(true));
-echo ',', assert(2130706433 == $loader->getIp()), EOL;
+echo ',', assert('127.0.0.1' == $request->getIp(true));
+echo ',', assert(2130706433 == $request->getIp()), EOL;
 
 /* isGet,isPost */
-$loader = new ZeLoader();
+$request = new ZeRequest();
 echo 'isGet,isPost:';
-echo assert(!$loader->isGet());
-echo ',', assert($loader->isPost());
-echo ',', assert(!$loader->isPut());
-echo ',', assert(!$loader->isDelete());
-echo ',', assert(!$loader->isTrace()), EOL;
+echo assert(!$request->isGet());
+echo ',', assert($request->isPost());
+echo ',', assert(!$request->isPut());
+echo ',', assert(!$request->isDelete());
+echo ',', assert(!$request->isTrace()), EOL;
 
 
 /* getGet,fromGet */
 echo 'getGet,fromGet:';
 $name = 'name';
-$loader = new ZeLoader();
-$value = $loader->getGet($name);
+$request = new ZeRequest();
+$value = $request->getGet($name);
 echo assert($value == 'example_get');
 
 $names = 'name, age';
 $values = null;
-$loader = new ZeLoader();
-echo ',', $loader->fromGet($values, $names);
+$request = new ZeRequest();
+$request->fromGet($values, $names);
 echo ',', assert($values == array('name' => 'example_get', 'age' => '128_get'));
 
 $values = new stdClass();
-echo ',', $loader->fromGet($values, $names);
+$request->fromGet($values, $names);
 $expect = new stdClass();
 $expect->name = 'example_get';
 $expect->age = '128_get';
-
 echo ',', assert($values == $expect), EOL;
 
 /* getPost,fromPost */
 echo 'getPost,fromPost:';
 
 $name = 'name';
-$loader = new ZeLoader();
-$value = $loader->getPost($name);
+$request = new ZeRequest();
+$value = $request->getPost($name);
 echo assert($value == 'example_post');
 
 $names = 'name, age';
 $values = null;
-$loader = new ZeLoader();
-$loader->fromPost($values, $names);
+$request = new ZeRequest();
+$request->fromPost($values, $names);
 echo ',', assert($values == array('name' => 'example_post', 'age' => '128_post')), EOL;
 
 /* getCookie,fromCookie */
 echo 'getCookie,fromCookie:';
 
 $name = 'name';
-$loader = new ZeLoader();
-$value = $loader->getCookie($name);
+$request = new ZeRequest();
+$value = $request->getCookie($name);
 
 echo assert($value == 'example_cookie');
 
 $names = 'name, age';
 $values = null;
-$loader = new ZeLoader();
-$loader->fromCookie($values, $names);
+$request = new ZeRequest();
+$request->fromCookie($values, $names);
 echo ',', assert($values == array('name' => 'example_cookie', 'age' => '128_cookie')), EOL;
 
 /* getRequest,fromRequest */
 echo 'getRequest,fromRequest:';
 
 $name = 'name';
-$loader = new ZeLoader();
-$value = $loader->getRequest($name);
+$request = new ZeRequest();
+$value = $request->getRequest($name);
 echo assert($value == 'example_cookie');
 
 $names = 'name, age';
 $values = null;
-$loader = new ZeLoader();
-$loader->fromRequest($values, $names);
+$request = new ZeRequest();
+$request->fromRequest($values, $names);
 echo ',', assert($values == array('name' => 'example_cookie', 'age' => '128_cookie')), EOL;
 
 /* getServer,fromServer */
 echo 'getServer,fromServer:';
 
 $name = 'SCRIPT_FILENAME';
-$loader = new ZeLoader();
-$value = $loader->getServer($name);
+$request = new ZeRequest();
+$value = $request->getServer($name);
 
 echo assert($value == __FILE__);
 
 $names = 'REQUEST_METHOD, SCRIPT_FILENAME';
 $values = null;
-$loader = new ZeLoader();
-$loader->fromServer($values, $names);
+$request = new ZeRequest();
+$request->fromServer($values, $names);
 
 echo ',', assert($values == array('REQUEST_METHOD' => 'POST', 'SCRIPT_FILENAME' => __FILE__)), EOL;
 
@@ -205,14 +204,14 @@ echo ',', assert($values == array('REQUEST_METHOD' => 'POST', 'SCRIPT_FILENAME' 
 echo 'getFile,fromFile:';
 
 $name = 'file_a';
-$loader = new ZeLoader();
-$value = $loader->getFile($name);
+$request = new ZeRequest();
+$value = $request->getFile($name);
 echo assert($value['error'] === 0);
 
 $names = 'file_a, file_b';
 $values = null;
-$loader = new ZeLoader();
-$loader->fromFile($values, $names);
+$request = new ZeRequest();
+$request->fromFile($values, $names);
 echo ',', assert($values['file_a']['error'] === 0);
 echo ',', assert($values['file_b']['error'] === 0), EOL;
 
@@ -221,50 +220,50 @@ echo 'getSession,fromSession:';
 
 /* getSession */
 $name = 'name';
-$loader = new ZeLoader();
-$value = $loader->getSession($name);
+$request = new ZeRequest();
+$value = $request->getSession($name);
 
 echo assert($value == 'example_session');
 
 /* fromSession */
 $names = 'name, age';
 $values = array();
-$loader = new ZeLoader();
-$loader->fromSession($values, $names);
+$request = new ZeRequest();
+$request->fromSession($values, $names);
 echo ',', assert($values['name'] == 'example_session');
 echo ',', assert($values['age'] == '128_session'), EOL;
 
 /* setValues */
 echo 'setValues:';
 // article.php/age/821_router/search/test_search?page=128_get
-$loader = new ZeLoader();
-$loader->setValues(array('age' => '321_router', 'search' => 'test_search'));
+$request = new ZeRequest();
+$request->setValues(array('age' => '321_router', 'search' => 'test_search'));
 
-$value = $loader->getGet('age');
+$value = $request->getGet('age');
 echo assert($value == '128_get');
 
-$value = $loader->getGet('search');
+$value = $request->getGet('search');
 echo ',', assert($value == 'test_search');
 
 $values = array();
-$loader->fromGet($values, 'name,age,search');
+$request->fromGet($values, 'name,age,search');
 echo ',', assert($values['name'] == 'example_get');
 echo ',', assert($values['age'] == '128_get');
 echo ',', assert($values['search'] == 'test_search');
 
-$value = $loader->getRequest('search');
+$value = $request->getRequest('search');
 echo ',', assert($value == 'test_search');
 
 $values = array();
-$loader->fromRequest($values, 'name,age,search');
+$request->fromRequest($values, 'name,age,search');
 echo ',', assert($values['name'] == 'example_cookie');
 echo ',', assert($values['age'] == '128_cookie');
 echo ',', assert($values['search'] == 'test_search');
 ?>
 --EXPECT--
-getIp,fromIp:1,1,1,1,1,1,1,1,1,1
+getIp,fromIp:1,1,1,1,1,1,1,1
 isGet,isPost:1,1,1,1,1
-getGet,fromGet:1,1,1,1,1
+getGet,fromGet:1,1,1
 getPost,fromPost:1,1
 getCookie,fromCookie:1,1
 getRequest,fromRequest:1,1

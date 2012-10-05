@@ -21,11 +21,11 @@
 
 #include "php.h"
 
-PHP_FUNCTION(ze_loader);
+PHP_FUNCTION(ze_request);
 
-/* {{{ ze_loader_args */
-ZEND_BEGIN_ARG_INFO(ze_loader_args, 0)
-	ZEND_ARG_OBJ_INFO(1, loader, ZeLoader, 0)
+/* {{{ ze_request_args */
+ZEND_BEGIN_ARG_INFO(ze_request_args, 0)
+	ZEND_ARG_OBJ_INFO(1, request, ZeRequest, 0)
 ZEND_END_ARG_INFO()
 /* }}} */
 

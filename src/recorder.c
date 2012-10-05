@@ -32,10 +32,11 @@ zend_class_entry * ze_recorder_ce;
 /* }}} */
 
 /** {{{ to_indexed
- */
-static zval * to_indexed(zval * sql, zval ** keys, char * query, int len) {
-	char   ch            = 0;
-	int    i             = 0;
+*/
+static zval * to_indexed(zval * keys, char * query, int len) {
+	zval * sql = NULL;
+	char   ch  = 0;
+	int    i   = 0;
 	smart_str skey       = {NULL, 0, 0};
 	smart_str ssql       = {NULL, 0, 0};
 
@@ -49,8 +50,8 @@ static zval * to_indexed(zval * sql, zval ** keys, char * query, int len) {
 						|| (ch > 64 && ch < 91)
 						|| (ch > 47 && ch < 58)
 						|| ch == 95
-				) {
-				   smart_str_appendc(&skey, ch);
+				   ) {
+					smart_str_appendc(&skey, ch);
 				} else {
 					break;
 				}
@@ -61,7 +62,7 @@ static zval * to_indexed(zval * sql, zval ** keys, char * query, int len) {
 			smart_str_0(&skey);
 
 			if (ssql.len) {
-				add_next_index_stringl(*keys, skey.c, skey.len, 1);
+				add_next_index_stringl(keys, skey.c, skey.len, 1);
 			}
 			smart_str_free(&skey);
 		} else {
@@ -69,14 +70,17 @@ static zval * to_indexed(zval * sql, zval ** keys, char * query, int len) {
 		}
 	}
 
+	MAKE_STD_ZVAL(sql);
 	if (ssql.len) {
-	  ZVAL_STRINGL(sql, ssql.c, ssql.len, 1);
+		ZVAL_STRINGL(sql, ssql.c, ssql.len, 1);
 	}else{
-	  ZVAL_STRINGL(sql, "", 0, 1);
+		ZVAL_STRINGL(sql, "", 0, 1);
 	}
 
 	smart_str_free(&skey);
 	smart_str_free(&ssql);
+
+	return sql;
 }
 /*}}}*/
 
@@ -111,18 +115,18 @@ PHP_METHOD(ze_recorder, __construct) {
 /** {{{ public ZeRecorder::query($sql = null, $args = null, $_ = null)
  */
 PHP_METHOD(ze_recorder, query) {
-	zval *   self        = NULL;
-	zval *   conn        = NULL;
-	zval *   stmt        = NULL;
-	char *   query       = NULL;
-	int      query_len   = 0;
-	zval *   sql         = NULL;
-	zval *   keys        = NULL;
+	zval *   self      = NULL;
+	zval *   conn      = NULL;
+	zval *   stmt      = NULL;
+	char *   query     = NULL;
+	int      query_len = 0;
+	zval *   sql       = NULL;
+	zval *   keys      = NULL;
 
-   if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s"
-							 , &query
-							 , &query_len
-							 ) == FAILURE) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s"
+				, &query
+				, &query_len
+				) == FAILURE) {
 		WRONG_PARAM_COUNT;
 	}
 	/* call prepare */
@@ -137,10 +141,10 @@ PHP_METHOD(ze_recorder, query) {
 			break;
 		}
 
-		ALLOC_INIT_ZVAL(sql);
-		ZE_NEW_ARRAY(keys);
+		MAKE_STD_ZVAL(keys);
+		array_init(keys);
 
-		to_indexed(sql, &keys, query, query_len);
+		sql = to_indexed(keys, query, query_len);
 
 		if (!sql) {
 			ze_error(E_ERROR TSRMLS_CC, "recorder.query.sql.is_empty");
@@ -150,17 +154,29 @@ PHP_METHOD(ze_recorder, query) {
 		zend_call_method(&conn, Z_OBJCE_P(conn), NULL, ZEND_STRL("prepare"), &stmt, 1, sql, NULL TSRMLS_CC);
 
 		if (!stmt || EG(exception)) {
+			zval_dtor(keys);
+			FREE_ZVAL(keys);
 			ze_error(E_ERROR TSRMLS_CC, "recorder.query.stmt.not_object");
 			break;
 		}
 		zend_update_property(ze_recorder_ce, self, ZEND_STRL(ZE_STMT), stmt TSRMLS_CC);
 		zend_update_property(ze_recorder_ce, self, ZEND_STRL(ZE_KEYS), keys TSRMLS_CC);
 
+		if (stmt != NULL) {
+			zval_ptr_dtor(&stmt);
+		}
+
+		if (keys != NULL) {
+			zval_ptr_dtor(&keys);
+		}
+
 	} while (0);
 
-	zval_ptr_dtor(&keys);
-	zval_ptr_dtor(&sql);
-	zval_ptr_dtor(&stmt);
+
+	if (sql != NULL) {
+		zval_dtor(sql);
+		FREE_ZVAL(sql);
+	}
 
 	RETURN_ZVAL(self, 1, 0);
 }

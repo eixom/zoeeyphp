@@ -40,8 +40,10 @@ PHP_METHOD(ze_activestring, __construct) {
 
 	self = getThis();
 
-	ZE_NEW_ARRAY(items);
-	ZE_NEW_ARRAY(actives);
+	MAKE_STD_ZVAL(items);
+	array_init(items);
+	MAKE_STD_ZVAL(actives);
+	array_init(actives);
 
 	zend_update_property(ze_activestring_ce, self, ZEND_STRL(ZE_ITEMS)    , items TSRMLS_CC);
 	zend_update_property(ze_activestring_ce, self, ZEND_STRL(ZE_ACTIVES)  , actives TSRMLS_CC);
@@ -140,7 +142,8 @@ PHP_METHOD(ze_activestring, active) {
 	if (Z_TYPE_PP(cond) == IS_STRING){
 		actives = zend_read_property(ze_activestring_ce, self, ZEND_STRL(ZE_ACTIVES), 0 TSRMLS_CC);
 		if (argc > 1){
-			ZE_NEW_ARRAY(format);
+			MAKE_STD_ZVAL(format);
+			array_init(format);
 			for(i=1; i<argc; i++) {
 				ALLOC_INIT_ZVAL(format_arg);
 				*format_arg = **(*args + i);

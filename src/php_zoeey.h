@@ -52,18 +52,6 @@ PHP_MINFO_FUNCTION(zoeey);
 #define ZOEEY_G(v) (zoeey_globals.v)
 #endif
 
-		
-
-
-
-
-/** {{{ new array
- */
-#define ZE_NEW_ARRAY(arr_name)                                                 \
-		ALLOC_INIT_ZVAL(arr_name);                                             \
-		array_init(arr_name);
-/* }}} */
-
 
 /*{{{ ref count*/
 #ifndef Z_ADDREF_P
@@ -73,6 +61,7 @@ PHP_MINFO_FUNCTION(zoeey);
 #endif
 /*}}}*/
 #endif    /* PHP_ZOEEY_H */
+
 /*{{{*/
 #ifndef MAKE_COPY_ZVAL
 #define MAKE_COPY_ZVAL(ppzv, pzv) \

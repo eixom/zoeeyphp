@@ -18,42 +18,42 @@
 #include "php.h"
 #include "php_zoeey.h"
 
-#include "loader.h"
+#include "request.h"
 #include "router.h"
 
-/** {{{ proto ze_loader(ZeLoader $loader = NULL)
+/** {{{ proto ze_request(ZeRequest $request = NULL)
  */
-#define ZE_LOADER_GLOBAL "global.ze_loader"
-PHP_FUNCTION(ze_loader) {
-	zval * loader         = NULL;
-	zval ** loader_global = NULL;
-	
+#define ZE_request_GLOBAL "global.ze_request"
+PHP_FUNCTION(ze_request) {
+	zval * request         = NULL;
+	zval ** request_global = NULL;
+
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|z"
-							,&loader 
-							) == FAILURE) {
+				,&request
+				) == FAILURE) {
 		WRONG_PARAM_COUNT;
 	}
 	do {
-			if (!loader) {
-				if (zend_hash_find(&EG(symbol_table), ZEND_STRS(ZE_LOADER_GLOBAL)
-								 , (void **) & loader_global) == SUCCESS) {
+		if (!request) {
+			if (zend_hash_find(&EG(symbol_table), ZEND_STRS(ZE_request_GLOBAL)
+						, (void **) & request_global) == SUCCESS) {
 
-					RETURN_ZVAL(*loader_global, 1, 0);
-					break;
-				}
+				RETURN_ZVAL(*request_global, 1, 0);
+				break;
 			}
+		}
 
-			if (!loader){
-				loader = ze_loader_instance(TSRMLS_C);
-			}
-			
-			if (loader){
-				 ZEND_SET_GLOBAL_VAR(ZE_LOADER_GLOBAL, loader);
-			}
+		if (!request){
+			request = ze_request_instance(TSRMLS_C);
+		}
 
-		} while(0);
+		if (request){
+			ZEND_SET_GLOBAL_VAR(ZE_request_GLOBAL, request);
+		}
 
-	RETURN_ZVAL(loader, 1, 0);
+	} while(0);
+
+	RETURN_ZVAL(request, 1, 0);
 }
 /*}}}*/
 

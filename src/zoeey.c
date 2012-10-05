@@ -27,7 +27,7 @@
 
 /* classes */
 #include "router.h"
-#include "loader.h"
+#include "request.h"
 #include "activestring.h"
 #include "pageset.h"
 #include "recorder.h"
@@ -43,7 +43,7 @@ static const zend_module_dep php_zoeey_deps[] = {
 /* {{{ zoeey_functions[]
  */
 zend_function_entry zoeey_functions[] = {
-	PHP_FE(ze_loader, ze_loader_args)
+	PHP_FE(ze_request, ze_request_args)
 	PHP_FE(ze_router, ze_router_args)
 	{NULL, NULL, NULL}
 };
@@ -63,7 +63,7 @@ ZEND_GET_MODULE(zoeey)
 PHP_MINIT_FUNCTION(zoeey)
 {
 	PHP_MINIT(ze_router)(INIT_FUNC_ARGS_PASSTHRU);
-	PHP_MINIT(ze_loader)(INIT_FUNC_ARGS_PASSTHRU);
+	PHP_MINIT(ze_request)(INIT_FUNC_ARGS_PASSTHRU);
 	PHP_MINIT(ze_activestring)(INIT_FUNC_ARGS_PASSTHRU);
 	PHP_MINIT(ze_pageset)(INIT_FUNC_ARGS_PASSTHRU);
 	PHP_MINIT(ze_recorder)(INIT_FUNC_ARGS_PASSTHRU);

@@ -10,15 +10,15 @@ if (!extension_loaded("zoeey")) {
 <?php
 require_once 'config.php';
 
-$loader = ze_loader();
-echo 'ze_loader:';
-echo assert($loader instanceof ZeLoader);
+$request = ze_request();
+echo 'ze_request:';
+echo assert($request instanceof ZeRequest);
 
-$loader = ze_loader();
-echo ',', assert($loader instanceof ZeLoader);
+$request = ze_request();
+echo ',', assert($request instanceof ZeRequest);
 
-$loader = new ZeLoader();
-echo ',', assert(ze_loader($loader) instanceof ZeLoader), EOL;
+$request = new ZeRequest();
+echo ',', assert(ze_request($request) instanceof ZeRequest), EOL;
 
 $router = ze_router();
 echo 'ze_router:';
@@ -33,5 +33,5 @@ echo ',', assert(ze_router($router) instanceof ZeRouter);
 
 ?>
 --EXPECT--
-ze_loader:1,1,1
+ze_request:1,1,1
 ze_router:1,1,1

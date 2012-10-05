@@ -90,7 +90,8 @@ PHP_ZOEEY_API zval * ze_names_to_list(char * names, int names_len) {
 	int    i        = 0;
 
 	name = emalloc(sizeof(char) * names_len);
-	ZE_NEW_ARRAY(list);
+	MAKE_STD_ZVAL(list);
+	array_init(list);
 
 	for(i = 0; i < names_len; i++) {
 		ch = *(names + i);

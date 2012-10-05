@@ -420,7 +420,8 @@ PHP_METHOD(ze_pageset, all) {
 	int    i            = 0;
 
 	self = getThis();
-	ZE_NEW_ARRAY(pages);
+	MAKE_STD_ZVAL(pages);
+	array_init(pages);
 
 	page_count = zend_read_property(ze_pageset_ce, self, ZEND_STRL(ZE_PAGE_COUNT), 0 TSRMLS_CC);
 
@@ -457,7 +458,8 @@ PHP_METHOD(ze_pageset, siblings) {
 	}
 
 	self = getThis();
-	ZE_NEW_ARRAY(pages);
+	MAKE_STD_ZVAL(pages);
+	array_init(pages);
 
 	page_count = zend_read_property(ze_pageset_ce, self, ZEND_STRL(ZE_PAGE_COUNT), 0 TSRMLS_CC);
 	current   = zend_read_property(ze_pageset_ce, self, ZEND_STRL(ZE_CURRENT)   , 0 TSRMLS_CC);

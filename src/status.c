@@ -181,7 +181,9 @@ PHP_METHOD(ze_status, toArray) {
 	name  = zend_read_property(ze_status_ce, self, ZEND_STRL(ZE_NAME) , 1 TSRMLS_CC);
 	brief = zend_read_property(ze_status_ce, self, ZEND_STRL(ZE_BRIEF), 1 TSRMLS_CC);
 
-	ZE_NEW_ARRAY(array);
+	MAKE_STD_ZVAL(array);
+	array_init(array);
+
 	Z_ADDREF_P(label);
 	add_assoc_zval(array, "label", label);
 
